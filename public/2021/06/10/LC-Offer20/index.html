@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>剑指 Offer 20. 表示数值的字符串 | Road Ahead to A Programmer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="字符串处理，确定有限状态自动机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指 Offer 20. 表示数值的字符串">
+<meta property="og:url" content="https://roomay.github.io/2021/06/10/LC-Offer20/index.html">
+<meta property="og:site_name" content="Road Ahead to A Programmer">
+<meta property="og:description" content="字符串处理，确定有限状态自动机">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-06-10T13:24:08.000Z">
+<meta property="article:modified_time" content="2021-06-10T14:30:37.083Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="字符串处理">
+<meta property="article:tag" content="自动机">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/pages/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/pages/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/pages/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/pages/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/pages/" id="logo">Road Ahead to A Programmer</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/pages/" id="subtitle">菜鸡码农自我修炼之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/pages/">Home</a>
+        
+          <a class="main-nav-link" href="/pages/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/pages/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-LC-Offer20" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/pages/2021/06/10/LC-Offer20/" class="article-date">
+  <time class="dt-published" datetime="2021-06-10T13:24:08.000Z" itemprop="datePublished">2021-06-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/pages/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      剑指 Offer 20. 表示数值的字符串
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+	<!-- Table of Contents -->
+	
+	  <div id="toc" class="toc-article">
+    		<strong class="toc-title">目录</strong>
+    		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5-%E6%9D%A5%E6%BA%90%EF%BC%9A%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89"><span class="toc-text">题目链接-来源：力扣（LeetCode）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-text">实现：</span></a></li></ol></li></ol>
+	  </div>
+	
+        <p>字符串处理，确定有限状态自动机</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h3 id="题目链接-来源：力扣（LeetCode）"><a href="#题目链接-来源：力扣（LeetCode）" class="headerlink" title="题目链接-来源：力扣（LeetCode）"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof">题目链接-来源：力扣（LeetCode）</a></h3><blockquote>
+<p>请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。</p>
+<p>数值（按顺序）可以分成以下几个部分：</p>
+<p>若干空格<br>一个 小数 或者 整数<br>（可选）一个 ‘e’ 或 ‘E’ ，后面跟着一个 整数<br>若干空格<br>小数（按顺序）可以分成以下几个部分：</p>
+<p>（可选）一个符号字符（’+’ 或 ‘-‘）<br>下述格式之一：<br>至少一位数字，后面跟着一个点 ‘.’<br>至少一位数字，后面跟着一个点 ‘.’ ，后面再跟着至少一位数字<br>一个点 ‘.’ ，后面跟着至少一位数字<br>整数（按顺序）可以分成以下几个部分：</p>
+<p>（可选）一个符号字符（’+’ 或 ‘-‘）<br>至少一位数字<br>部分数值列举如下：</p>
+<p>[“+100”, “5e2”, “-123”, “3.1416”, “-1E-16”, “0123”]<br>部分非数值列举如下：</p>
+<p>[“12e”, “1a3.14”, “1.2.3”, “+-5”, “12e+5.4”]</p>
+<p>示例 1：</p>
+<p>输入：s = “0”<br>输出：true</p>
+</blockquote>
+<h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><p>注意到字符串有很多状态和可能，如果一个一个用 if-else 类似硬编码的方式处理本题，代码会相当繁琐，于是考虑引入有限状态自动机来解决此类问题。<br>我们可以比较容易地写出虽然冗长但是清晰的状态转移表：<br>              前导  符号  整数 小数  指数  指数  指数 结尾  错误<br>              空格                  开始  符号       空格<br>输入字符 状态 start numPZ numZ numD numES numPE numE end   f<br>‘ ‘          start   f    f    f    f     f     f   end   f<br>‘+’,’-‘      numPZ   f    f    f   numPE  f     f    f    f<br>‘.’          numD  numD  numD  f    f     f     f    f    f<br>‘$’数字      numZ  numZ  numZ numD numE  numE  numE  f    f<br>‘e’,’E’        f     f   numESnumES f     f     f    f    f<br>其中缺少了对单独小数点 ‘.’ 并非数字的判断，可以加在自动机状态中单列一个状态，也可以像我一样额外设计一个方法 isDecimal() 判断当前收集到的字符串是否为小数。<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<h4 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String[]&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;() &#123;&#123;</span><br><span class="line">            put(<span class="string">&quot;start&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;numPZ&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;numZ&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;numD&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;numES&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;numPE&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;numE&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">            put(<span class="string">&quot;end&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;numPZ&quot;</span>, <span class="string">&quot;numZ&quot;</span>, <span class="string">&quot;numD&quot;</span>, <span class="string">&quot;numES&quot;</span>, <span class="string">&quot;numPE&quot;</span>, <span class="string">&quot;numE&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;false&quot;</span>&#125;);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        String status = <span class="string">&quot;start&quot;</span>;</span><br><span class="line">        String fail = <span class="string">&quot;false&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            status = map.get(status)[getCol(status, c)];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (status.equals(fail)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;.&#x27;</span> &amp;&amp; !isDecimal(s, i)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (status.equals(<span class="string">&quot;numZ&quot;</span>) || status.equals(<span class="string">&quot;numD&quot;</span>) || status.equals(<span class="string">&quot;numE&quot;</span>) || status.equals(<span class="string">&quot;end&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isDecimal</span> <span class="params">(String s, <span class="keyword">int</span> dotIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        <span class="keyword">if</span> (dotIndex &gt; <span class="number">0</span> &amp;&amp; s.charAt(dotIndex - <span class="number">1</span>) &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; s.charAt(dotIndex - <span class="number">1</span>) &lt;= <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span> (dotIndex &lt; len - <span class="number">1</span> &amp;&amp; s.charAt(dotIndex + <span class="number">1</span>) &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; s.charAt(dotIndex + <span class="number">1</span>) &lt;= <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getCol</span><span class="params">(String status, <span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">switch</span>(c) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27; &#x27;</span>:</span><br><span class="line">                i = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;+&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">                i = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;.&#x27;</span>:</span><br><span class="line">                i = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;0&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;1&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;2&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;3&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;4&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;5&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;6&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;7&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;8&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;9&#x27;</span>:</span><br><span class="line">                i = <span class="number">3</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;e&#x27;</span>: <span class="keyword">case</span> <span class="string">&#x27;E&#x27;</span>:</span><br><span class="line">                i = <span class="number">4</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                i = <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">switch</span>(status) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;start&quot;</span>:</span><br><span class="line">                j = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;numPZ&quot;</span>:</span><br><span class="line">                j = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;numZ&quot;</span>:</span><br><span class="line">                j = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;numD&quot;</span>:</span><br><span class="line">                j = <span class="number">3</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;numES&quot;</span>:</span><br><span class="line">                j = <span class="number">4</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;numPE&quot;</span>:</span><br><span class="line">                j = <span class="number">5</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;numE&quot;</span>:</span><br><span class="line">                j = <span class="number">6</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;end&quot;</span>:</span><br><span class="line">                j = <span class="number">7</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                j = <span class="number">8</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> move[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[][] move = <span class="keyword">new</span> <span class="keyword">int</span>[][] &#123;</span><br><span class="line">        &#123;<span class="number">0</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>&#125;, </span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="number">8</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>&#125;,</span><br><span class="line">        &#123;<span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roomay.github.io/2021/06/10/LC-Offer20/" data-id="ckprtmcq6001h5gu5hclc1wjj" data-title="剑指 Offer 20. 表示数值的字符串" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pages/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pages/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pages/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pages/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/pages/2021/06/10/LC-Offer21/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
+        
+      </div>
+    </a>
+  
+  
+    <a href="/pages/2021/06/10/LC-Offer19/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">剑指 Offer 19. 正则表达式匹配</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/pages/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/pages/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/pages/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/pages/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/pages/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 13.33px;">二分法</a> <a href="/pages/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 10px;">位运算</a> <a href="/pages/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 10px;">全排列</a> <a href="/pages/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 16.67px;">动态规划</a> <a href="/pages/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 13.33px;">双指针</a> <a href="/pages/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/pages/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 16.67px;">回溯</a> <a href="/pages/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.33px;">图的遍历</a> <a href="/pages/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 13.33px;">字符串处理</a> <a href="/pages/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10px;">快速幂</a> <a href="/pages/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/pages/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/pages/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">自动机</a> <a href="/pages/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">链表操作</a> <a href="/pages/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">链表查找</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pages/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/pages/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/pages/2021/06/10/LC-Offer24/">剑指 Offer 24. 反转链表</a>
+          </li>
+        
+          <li>
+            <a href="/pages/2021/06/10/LC-Offer22/">剑指 Offer 22. 链表中倒数第k个节点</a>
+          </li>
+        
+          <li>
+            <a href="/pages/2021/06/10/LC-Offer21/">剑指 Offer 21. 调整数组顺序使奇数位于偶数前面</a>
+          </li>
+        
+          <li>
+            <a href="/pages/2021/06/10/LC-Offer20/">剑指 Offer 20. 表示数值的字符串</a>
+          </li>
+        
+          <li>
+            <a href="/pages/2021/06/10/LC-Offer19/">剑指 Offer 19. 正则表达式匹配</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 Roomay<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/pages/" class="mobile-nav-link">Home</a>
+  
+    <a href="/pages/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/pages/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/pages/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/pages/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
