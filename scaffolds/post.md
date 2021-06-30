@@ -2,7 +2,7 @@
 title: {{ title }}
 date: {{ date }}
 categories:
-    - 剑指Offer(第2版)刷题小记
+    - LeetCode主站刷题小记
 tags: 
   - 算法
   - 数据结构
