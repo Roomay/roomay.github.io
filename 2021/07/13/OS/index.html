@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>操作系统基础知识 | Road Ahead to A Programmer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="操作系统基础知识校招面经整理、热身">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统基础知识">
+<meta property="og:url" content="https://roomay.github.io/pages/2021/07/13/OS/index.html">
+<meta property="og:site_name" content="Road Ahead to A Programmer">
+<meta property="og:description" content="操作系统基础知识校招面经整理、热身">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-13T14:53:15.000Z">
+<meta property="article:modified_time" content="2022-08-02T05:41:49.594Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="八股文">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="OS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Road Ahead to A Programmer</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-OS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/13/OS/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T14:53:15.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      操作系统基础知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+	<!-- Table of Contents -->
+	
+	  <div id="toc" class="toc-article">
+    		<strong class="toc-title">目录</strong>
+    		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">操作系统基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">进程和线程的区别：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU-%E4%B8%BB%E8%A6%81%E8%B0%83%E5%BA%A6%E6%98%AF%E7%BA%BF%E7%A8%8B%E8%BF%98%E6%98%AF%E8%BF%9B%E7%A8%8B%EF%BC%9A"><span class="toc-text">CPU 主要调度是线程还是进程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B%EF%BC%9A"><span class="toc-text">僵尸进程与孤儿进程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-text">Linux 进程管理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-text">Linux 内存管理：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%9A"><span class="toc-text">进程通信：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">进程调度方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%86%85%E6%A0%B8%E6%80%81%E3%80%81%E7%94%A8%E6%88%B7%E6%80%81%EF%BC%9F%E4%B8%AD%E6%96%AD%E3%80%81%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%AD%89%E7%9B%B8%E5%85%B3%EF%BC%9A"><span class="toc-text">为什么要有内核态、用户态？中断、系统调用等相关：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E8%99%9A%E6%8B%9F%E5%8C%96%EF%BC%8CDocker-%E5%8F%8A-K8s-%E7%9B%B8%E5%85%B3%EF%BC%9A"><span class="toc-text">容器虚拟化，Docker 及 K8s 相关：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B%EF%BC%9A"><span class="toc-text">生产者-消费者模型：</span></a></li></ol></li></ol>
+	  </div>
+	
+        <p>操作系统基础知识校招面经整理、热身</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h1 id="操作系统基础知识"><a href="#操作系统基础知识" class="headerlink" title="操作系统基础知识"></a>操作系统基础知识</h1><h2 id="进程和线程的区别："><a href="#进程和线程的区别：" class="headerlink" title="进程和线程的区别："></a>进程和线程的区别：</h2><p>进程是程序调度的基本单位，既包括时间概念——一段由一系列指令占用的 CPU 的时间片，也包括资源概念——处理这些指令所需的各种资源，包括内存空间，进程上下文，I&#x2F;O权限等。<br>线程是进程中任务执行的基本单位，是比进程更细的粒度对资源的划分，进程中占用的 CPU 时间片可以继续细化为一个个具体的任务，每个任务分别占用一小段时间片。同时不同线程也拥有自己的线程上下文，并共享所在进程内的公共内存空间，为了更好操作这些公共内存空间，线程间需要一些同步、互斥机制（如各种锁、信号等），共享内存以及同步、互斥机制，就成为了线程间通信的手段。<br>例如 Java 当中启动 Main 函数以后相当于启动了一个 JVM 进程，而 Main 函数所在线程作为该进程的主线程。</p>
+<h2 id="CPU-主要调度是线程还是进程："><a href="#CPU-主要调度是线程还是进程：" class="headerlink" title="CPU 主要调度是线程还是进程："></a>CPU 主要调度是线程还是进程：</h2><p>从系统角度看，CPU 的调度是以进程为粒度的。每次 CPU 挂起、就绪、运行、阻塞、终止等操作的基本对象都是进程。CPU 要负责对运行的进程调度所需的各种资源，并在当前进程挂起时为其保存上下文。<br>线程更多的是进程内部的概念，其切换不影响 CPU 资源分配。</p>
+<h2 id="僵尸进程与孤儿进程："><a href="#僵尸进程与孤儿进程：" class="headerlink" title="僵尸进程与孤儿进程："></a>僵尸进程与孤儿进程：</h2><ul>
+<li>僵尸进程：一个已经执行完毕的子进程，向父进程发送的 exit() 信号没有被处理，导致该进程继续存在于进程表中没有被处理，也无法被直接关闭，成为僵尸进程。<br>处理方法：</li>
+</ul>
+<ol>
+<li>对其父进程执行 kill -9 指令，杀掉父进程。</li>
+<li>重启电脑。</li>
+</ol>
+<ul>
+<li>孤儿进程：一个正在执行的子进程，其父进程已经退出，该进程成为孤儿进程。<br>该进程无需特殊处理，会被 init 进程接管，处理其执行状态，直到该子进程运行完毕结束生命周期。</li>
+</ul>
+<h2 id="Linux-进程管理："><a href="#Linux-进程管理：" class="headerlink" title="Linux 进程管理："></a>Linux 进程管理：</h2><ul>
+<li>进程信息<ul>
+<li>进程地址空间</li>
+<li>进程状态</li>
+<li>进程执行优先级</li>
+<li>进程调用的资源信息</li>
+<li>进程打开的文件、网络端口</li>
+<li>进程的信号掩码</li>
+<li>进程属于哪个用户</li>
+</ul>
+</li>
+<li>进程状态<ul>
+<li>Runnable 正在（准备）执行</li>
+<li>Sleeping 等待资源</li>
+<li>Zombie 尝试结束</li>
+<li>Stopped 挂起、停止运行</li>
+</ul>
+</li>
+<li>信号：可作为进程间通信的手段，也可以由终端发送，改变进程状态。常见如 INT、KILL、STOP、Quit、HUP、TERM、SEGV 等</li>
+<li>进程相关命令<ul>
+<li>kill [-signal] pid 给进程传递信号，默认发送 TERM</li>
+<li>pgrep 筛选进程号</li>
+<li>pkill 发送信号给筛选结果</li>
+<li>killall 杀死进程的所有实例</li>
+<li>ps 资源监控，显示进程的 PID、UID、优先级、控制终端、占用内存、CPU时间、当前状态</li>
+<li>top 实时版的 ps，类似 windows 的任务管理器和资源监视器</li>
+</ul>
+</li>
+<li>前台进程：由用户控制的终端会话创建和控制的进程；后台进程：不与用户交互的进程</li>
+</ul>
+<h2 id="Linux-内存管理："><a href="#Linux-内存管理：" class="headerlink" title="Linux 内存管理："></a>Linux 内存管理：</h2><ul>
+<li>内存分区<ul>
+<li>代码段 text</li>
+<li>数据段 data</li>
+<li>BSS 段</li>
+<li>堆</li>
+<li>栈</li>
+</ul>
+</li>
+<li>进程数据结构组织方法<ul>
+<li>进程内存描述映射到一个数据结构 vm_area_struct ，该结构以链表、红黑树形式组织，结点指向其对应进程的起始地址和终止地址</li>
+</ul>
+</li>
+<li>内核内存管理<ul>
+<li>分页，空闲页面处理采用伙伴关系</li>
+<li>基本函数 get_free_page 在内核中分配内存 malloc 利用堆动态分配调用 brk 分配内存</li>
+<li>内存分配器<ul>
+<li>slab 将小内存当作对象，使用完毕后缓存到「存储池」留待复用，接口 Kmalloc </li>
+<li>Vmalloc 函数实现非连续内存分配</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="进程通信："><a href="#进程通信：" class="headerlink" title="进程通信："></a>进程通信：</h2><ul>
+<li>互斥量 mutex， 信号量 Semaphore: 二者都是可以同时被若干进程访问的全局变量。互斥量可以看作是只有 1 bit 的信号量（类似 boolean 值），对应 上锁&#x2F;无锁 2 种状态，控制进程对某个资源的互斥访问———即同一时间只有一个进程能访问到资源；而信号量是一个正整数对应了 n 把锁（类似 int 值），同一时间最多可以有 n 个进程可以访问到资源。</li>
+<li>管程 Monitor：互斥量和信号量的问题在于，作为全局变量，围绕其写的并发代码可读性、可维护性差，往往牵一发而动全身。因此，我们可以把这类变量封装在一个专门用于实现并发的类中，称为管程 Monitor，而互斥量和信号量就是其内部私有的一个数据结构。管程中有指向进程的指针（或PID），用以标记当前获得资源的进程。</li>
+<li>管道：用于父子进程间通信，半双工。</li>
+<li>命名管道：允许无亲缘关系的进程间通信，半双工。这两种管道只能承载无格式的字节流。</li>
+<li>消息队列：用链表组织一个个消息，存于内核中并有一个唯一的消息队列标识符，缓冲区大小不受限制，可以传输更多信息。</li>
+<li>共享内存：性能最好，最常用的通信方式。创建一段内存，多个进程都有一块虚拟内存映射到这块物理地址。常与信号量等配合使用。<ul>
+<li>linux 的共享内存实现方式比较特殊。在系统初始化时就在磁盘 SWAP 区（即 linux 下辅助实现虚拟内存的分区），建立了一个专门用来实现共享内存的临时文件系统 shm（断电后销毁）。内核定义一种结构 ipc_ids，实例名为 shm_ids，该实例中的 entries 字段指向了一个 ipc_id_ary 结构；此结构有一个数组字段，数组每一个元素指向了一个 shmid kernel 结构；此结构中的 shm_perm 字段指向了一个 kern_ipc_perm 结构，定义了进程间通信的许可信息、另一个字段 shm_file 指向了一个临时文件 file 对象，进程通信时，内核将这个文件映射到用户地址空间，从而可以被许可的进程共享。</li>
+</ul>
+</li>
+<li>信号 signal：通知进程某个事件已经发生。</li>
+<li>套接字 Socket：用于不同机器间的进程通信。</li>
+</ul>
+<h2 id="进程调度方法："><a href="#进程调度方法：" class="headerlink" title="进程调度方法："></a>进程调度方法：</h2><p>进程的调度本质上就是对不同进程的优先级管理，所有调度方法的区别可以说就是一个个存储进程指针的优先级队列(Prioritry Queue)的优先级算法的区别。</p>
+<h2 id="为什么要有内核态、用户态？中断、系统调用等相关："><a href="#为什么要有内核态、用户态？中断、系统调用等相关：" class="headerlink" title="为什么要有内核态、用户态？中断、系统调用等相关："></a>为什么要有内核态、用户态？中断、系统调用等相关：</h2><h2 id="容器虚拟化，Docker-及-K8s-相关："><a href="#容器虚拟化，Docker-及-K8s-相关：" class="headerlink" title="容器虚拟化，Docker 及 K8s 相关："></a>容器虚拟化，Docker 及 K8s 相关：</h2><h2 id="生产者-消费者模型："><a href="#生产者-消费者模型：" class="headerlink" title="生产者-消费者模型："></a>生产者-消费者模型：</h2><style type="text/css">
+    h1 { counter-reset: h2counter; }
+    h2 { counter-reset: h3counter; }
+    h3 { counter-reset: h4counter; }
+    h4 { counter-reset: h5counter; }
+    h5 { counter-reset: h6counter; }
+    h6 { }
+    h2:before {
+      counter-increment: h2counter;
+      content: counter(h2counter) ".\0000a0\0000a0";
+    }
+    h3:before {
+      counter-increment: h3counter;
+      content: counter(h2counter) "."
+                counter(h3counter) ".\0000a0\0000a0";
+    }
+    h4:before {
+      counter-increment: h4counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) ".\0000a0\0000a0";
+    }
+    h5:before {
+      counter-increment: h5counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) "."
+                counter(h5counter) ".\0000a0\0000a0";
+    }
+    h6:before {
+      counter-increment: h6counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) "."
+                counter(h5counter) "."
+                counter(h6counter) ".\0000a0\0000a0";
+    }
+</style>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roomay.github.io/pages/2021/07/13/OS/" data-id="cl6c1l2td00ayiov5357r5cdj" data-title="操作系统基础知识" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/13/DS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据结构基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/13/LC0041/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">41. 缺失的第一个正数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFS/" style="font-size: 12.31px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.08px;">BST</a> <a href="/tags/DFS/" style="font-size: 16.15px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.77px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.77px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 16.15px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 13.85px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.54px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 13.85px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 18.46px;">动态规划</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.77px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 16.92px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.31px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 14.62px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 15.38px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 16.92px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.77px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.54px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.54px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 17.69px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.54px;">层序遍历</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.77px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.77px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.08px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.54px;">校招</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 19.23px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.77px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.31px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.77px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 16.92px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/21/2022-%E9%9D%A2%E7%BB%8F-md/">2022 他人面经.md</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/16/Interview-Yuanfudao/">2022 猿辅导校招 Java 后端开发秋招</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/15/Interview-General/">面试综合技巧（不定期更新）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/15/Interview-Huawei/">2022 华为云 BU 校招 Java 后端开发秋招</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Roomay<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
