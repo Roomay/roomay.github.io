@@ -12,7 +12,7 @@ updated: 2022-08-18 21:41:42
 ---
 
 [//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-使用 Hadoop、Spark、Kafka 等分布式组件、消息组件时涉及到的问题。
+使用 Hadoop、Spark、Kafka、RocketMQ 等分布式组件、消息组件时涉及到的问题。
 <!--more-->
 <script id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
@@ -39,6 +39,13 @@ K8s 的结构跟大多数分布式系统一样，采用 Master-Slave 主从结�
 
 ## Kafka 的工作原理
 Kafka 是一种 Real-time Structured Streaming Applications 实时结构化数据流应用，主要实现原理是「生产者-消费者」的消息队列模型。
+
+## RocketMQ 的工作原理
+### 架构
+* NameServer 集群：管理元数据，包括 Topic 路由信息等（类似 Kafka 较早版本的 Zookeeper），接受 Broker 集群的服务注册。发现 Producer 集群和 Consumer 集群的服务。
+* Producer 集群：向 Broker 集群发送消息
+* Consumer 集群：从 Broker 集群消费消息
+* Broker 集群：Master-Slave 架构，存储消息
 
 ## Hadoop, Spark, Kafka 等系统如何处理分布式场景下的数据一致性？
 * Hadoop 严格来讲不是分布式系统，只是将计算任务分配到各个节点 DATa Node 当中，不同节点由 NameNode 调度，而彼此之间是相互独立的，不会出现并发错误下的一致性问题。
