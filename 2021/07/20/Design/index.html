@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>场景设计 | Road Ahead to A Programmer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="场景设计校招面经整理、热身">
+<meta property="og:type" content="article">
+<meta property="og:title" content="场景设计">
+<meta property="og:url" content="https://roomay.github.io/pages/2021/07/20/Design/index.html">
+<meta property="og:site_name" content="Road Ahead to A Programmer">
+<meta property="og:description" content="场景设计校招面经整理、热身">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-20T15:45:44.000Z">
+<meta property="article:modified_time" content="2021-07-20T15:45:44.000Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="场景设计">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Road Ahead to A Programmer</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Design" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/20/Design/" class="article-date">
+  <time class="dt-published" datetime="2021-07-20T15:45:44.000Z" itemprop="datePublished">2021-07-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      场景设计
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+	<!-- Table of Contents -->
+	
+	  <div id="toc" class="toc-article">
+    		<strong class="toc-title">目录</strong>
+    		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="toc-text">1. 用户登录系统：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%EF%BC%9A"><span class="toc-text">2. 秒杀系统：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%AE%BE%E8%AE%A1%EF%BC%9A"><span class="toc-text">3.线程池设计：</span></a></li></ol>
+	  </div>
+	
+        <p>场景设计校招面经整理、热身</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h4 id="1-用户登录系统："><a href="#1-用户登录系统：" class="headerlink" title="1. 用户登录系统："></a>1. 用户登录系统：</h4><ul>
+<li>表结构设计<ul>
+<li>为了支持多种方式用户登录，并且隔离敏感数据（如密码），防止接口暴露而泄露，我们需要分表</li>
+<li>将用户的一些非敏感信息集合在一个 Profile 表中，字段如下： user_id（主键） | name | birthday | …</li>
+<li>用户名和密码单独维护在一个 LocalAuth 表中，字段如下： user_id（主键） | userName | password</li>
+<li>其他 OAuth 协议登录方式可以集成在一张 OAuth 表中，因为一个用户可能对应多种认证登录方式，不能再以 user_id 作为主键，改用一个自增 id，字段如下： id（主键） | user_id | oauth_name（比如 weibo、qq 等） | oauth_id | oauth_access_token | oauth_expires</li>
+<li>其他登录方式类似，可以新建一个表，单独存储该种登录所需的相关信息，所有表均通过 user_id 关联到 Profile 表中</li>
+</ul>
+</li>
+<li>认证实现过程<ul>
+<li>用户选择任意一种登录方式（用户名密码、第三方 OAuth、HTTP Authorization Header、API-Token等），将用户导向到登录 URL，用户以该方式登录成功后，创建一个 Cookie，利用该 Cookie 标记用户</li>
+<li>设计一个统一的 Authenticator 接口<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Authenticator</span> &#123;</span><br><span class="line">  User <span class="title function_">authenticate</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> AuthenticateException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>每一种类型的认证登录，都要用一个类实现这个接口，如表单登录 Cookie 认证<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> LocalCookieAuthenticator <span class="keyword">implements</span> <span class="title class_">Authenticator</span> &#123;</span><br><span class="line">  User <span class="title function_">authenticate</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> AuthenticateException &#123;</span><br><span class="line">    <span class="comment">// 向用户请求一个 Cookie</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">cookie</span> <span class="operator">=</span> getCookieFromRequest(request, <span class="string">&#x27;cookieName&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (cookie == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> getUserByCookie(cookie);</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>然后用一个统一的入口接口，将这类登录接口以线性表形式串起来，依次尝试认证<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GlobalFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">  <span class="comment">// 写一个 initAuthenticators() 方法，将前面各种 Authenticator 组织成一个数组后返回</span></span><br><span class="line">  Authenticator[] authenticators = initAuthenticators();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历各种 Authenticator 直到有一种方式认证登录成功</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> &#123;</span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (Authenticator auth : authenticators) &#123;</span><br><span class="line">      user = auth.authenticate(request, response);</span><br><span class="line">      <span class="keyword">if</span> (user != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 把 User 绑定到 UserContext 中，UserContext 是一个与业务逻辑相关的类，关于绑定的实现详见下文</span></span><br><span class="line">    <span class="keyword">try</span> (<span class="type">UserContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserContext</span>(user)) &#123;</span><br><span class="line">      chain.doFilter(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>生成可信的 Cookie<ul>
+<li>用一个单向的加密函数生成，如 md5<ul>
+<li>以用户名密码登录为例， [userName] : [md5(password)] 形式的串构成的 Cookie 发送给客户端；</li>
+<li>服务器分解该 Cookie 得到用户名和 密码的 md5 值，从 LocalAuth 表中查到密码并计算出 md5 值，进行比对，若一致则有效。</li>
+<li>以上方案基本成型，缺点在于，一是即使是 md5 也容易被攻击破解（彩虹表等）；二是用户名在 Cookie 中是明文存储，也会造成信息泄露；三是 Cookie 没有设置有效期，永久有效是不能接受的。</li>
+</ul>
+</li>
+<li>改进：增加一些随机值进入 md5 的参数中（例如除了口令以外，增加当前时间戳 + 固定过期时长，增加一个随机产生的字符串），同时在 Cookie 明文中用 user_id 取代 userName<ul>
+<li>例如参数可以设计成如下形式 [user_id] : [password] : [stamp] : [randomString] </li>
+<li>那么最后拼接而成的 Cookie 就是 [user_id] : [stamp] : [md5(前述参数)]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绑定用户<ul>
+<li>需要将 user 信息绑定到当前线程，方便我们进行如下调用<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> UserContext.current.get();</span><br></pre></td></tr></table></figure></li>
+<li>具体实现时，用一个 UserContext 类封装实现细节<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserContext</span> <span class="keyword">implements</span> <span class="title class_">AutoCloseable</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;User&gt; current = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>&lt;User&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">UserContext</span><span class="params">(User user)</span> &#123;</span><br><span class="line">    current.set(user);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> User <span class="title function_">getCurrentUser</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> current.get();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> &#123;</span><br><span class="line">    current.remove();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-秒杀系统："><a href="#2-秒杀系统：" class="headerlink" title="2. 秒杀系统："></a>2. 秒杀系统：</h4><ul>
+<li>系统大致可分为如下层次： 浏览器端、站点层、服务层、数据层（数据库如 MySQL 所在层），基本思路：请求拦截、缓存<ul>
+<li>尽可能将请求拦截在上游（上游即靠前的层次，让访问请求尽可能少地到达数据层）</li>
+<li>秒杀系统特点是读多写少（最多执行等于商品数量的写次数，但读次数在用户数量的数量级），适合使用缓存</li>
+</ul>
+</li>
+<li>实现逻辑<ul>
+<li>浏览器层，请求拦截：用户点击请求按钮后置灰、JS限制用户一定时间内提交请求</li>
+<li>站点层，请求拦截与页面缓存：对同一个 uid，限制其访问频度，并缓存页面，对其一定时间内发出的请求，返回相同页面；对同一个商品的查询，也缓存页面，在一定时间内返回相同页面。</li>
+<li>服务层，请求拦截与数据缓存：对于写请求（即购买请求，与之相对应的，读请求为查询请求），使用一个请求消息队列存放，每次只释放一部分透过本层到达数据层，成功再接着放，若失败（库存不够），则对队列中剩余请求全部返回库存不足；对于读请求，使用缓存，如redis。</li>
+<li>数据层，几乎不需要做优化，因为大部分请求已经拦截，配合缓存层对写请求做好一致性即可，如分布式事务或消息队列。支付倒计时内锁定库存，支付成功扣减库存否则释放库存，这个功能可以放在数据层完成，使用悲观锁实现。</li>
+</ul>
+</li>
+<li>表结构<ul>
+<li>秒杀活动表，字段如下：[活动编码]、[活动名]、[商品编码]、[价格]、[计划售出数量]</li>
+<li>库存表，字段如下：[商品编码]、[商品名称]、[活动编码]、[总库存]、[预扣库存（用于支付锁定）]</li>
+<li>商品表，字段如下：[商品编码]、[商品名称]、[商品标题]、[商品价格]、[商品描述]</li>
+<li>订单表，字段如下：[订单编码]、[商品编码]、[数量]、[用户id]</li>
+<li>表行为如下：运营创建活动，从商品表中读取（read）商品数据，将相关信息一起写入（insert）秒杀活动表，写入（update）预扣库存到库存表；活动持续期间需要保持对库存表、订单表的读、写操作。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-线程池设计："><a href="#3-线程池设计：" class="headerlink" title="3.线程池设计："></a>3.线程池设计：</h4><ul>
+<li>线程池的基本模型为生产者-消费者模型，可以用两个队列存放生产者（任务）和消费者（线程）。</li>
+<li>线程对象结构<ul>
+<li>terminate 状态字段</li>
+<li>所在的线程池对象字段</li>
+<li>方法<ul>
+<li>构造器方法</li>
+<li>执行方法（通常为一个死循环）：锁定互斥量，取任务队列中的任务，获取到任务后释放锁。然后调用任务的 handler 方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>线程池的对象结构如下<ul>
+<li>字段<ul>
+<li>线程队列</li>
+<li>任务队列</li>
+<li>互斥量（用于操作任务队列）</li>
+<li>信号量（用于操作线程）</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li>构造器：初始化锁、信号量、线程队列、任务队列</li>
+<li>创建工作线程<ul>
+<li>调用线程构造器方法</li>
+<li>为线程设置回调函数</li>
+</ul>
+</li>
+<li>任务生产：<ul>
+<li>获得互斥锁</li>
+<li>将任务添加至任务队列</li>
+<li>用信号量唤醒线程</li>
+<li>释放互斥锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roomay.github.io/pages/2021/07/20/Design/" data-id="cl6c1l2tj00beiov5g6bw70u3" data-title="场景设计" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/28/LC0041/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          41. 缺失的第一个正数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/13/Java/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java 基础知识、JVM、Java多线程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFS/" style="font-size: 12.73px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.64px;">BST</a> <a href="/tags/DFS/" style="font-size: 17.27px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.91px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 17.27px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 14.55px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.82px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 15.45px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 19.09px;">动态规划</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.91px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 18.18px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.73px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 17.27px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 16.36px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 18.18px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.82px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.82px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 19.09px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.82px;">层序遍历</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.91px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.91px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.64px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.82px;">校招</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">框架</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.91px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.73px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.91px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 19.09px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/05/Thrift/">Thrift 相关知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/17/Interview-Flexport/">Flexport 面试</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/03/Distributed/">分布式系统、消息中间件相关</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/2022-%E9%9D%A2%E7%BB%8F-md/">2022 他人面经.md</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Roomay<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

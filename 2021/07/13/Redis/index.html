@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Redis 基础知识 | Road Ahead to A Programmer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Redis 基础知识校招面经整理、热身">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 基础知识">
+<meta property="og:url" content="https://roomay.github.io/pages/2021/07/13/Redis/index.html">
+<meta property="og:site_name" content="Road Ahead to A Programmer">
+<meta property="og:description" content="Redis 基础知识校招面经整理、热身">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-13T14:59:28.000Z">
+<meta property="article:modified_time" content="2021-07-13T14:59:28.000Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="八股文">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Road Ahead to A Programmer</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/13/Redis/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T14:59:28.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Redis 基础知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+	<!-- Table of Contents -->
+	
+	  <div id="toc" class="toc-article">
+    		<strong class="toc-title">目录</strong>
+    		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-text">1. Redis的数据结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Redis%E7%9A%84%E5%90%84%E5%AF%B9%E8%B1%A1%E5%BA%95%E5%B1%82%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-text">2. Redis的各对象底层结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E3%80%81%E5%87%BB%E7%A9%BF%E3%80%81%E7%A9%BF%E9%80%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">3. 缓存雪崩、击穿、穿透解决方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5%E5%8E%9F%E7%90%86%E3%80%81%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-text">4. 持久化策略原理、实现细节及应用场景：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86%E5%8F%8A%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D%EF%BC%9A"><span class="toc-text">5. 主从复制原理及故障恢复：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%EF%BC%9A"><span class="toc-text">6. 分布式锁：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E7%BC%93%E5%AD%98%EF%BC%88Redis%EF%BC%89%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">7. 缓存（Redis）与数据库的一致性问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#n-%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-text">n. 题目：</span></a></li></ol>
+	  </div>
+	
+        <p>Redis 基础知识校招面经整理、热身</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h4 id="1-Redis的数据结构："><a href="#1-Redis的数据结构：" class="headerlink" title="1. Redis的数据结构："></a>1. Redis的数据结构：</h4><p>Redis 的数据库的基本单元是一个个「键值对」，键值对由「对象」组成， 具体是后述 5 种对象之一。<br>键值对中的键一定是字符串对象，可以认为是这个键值对的「名字」<br>键值对中的值可以是任意类型的某个具体的对象，可以认为是这个键值对的「本体」。</p>
+<p>Redis 还有许多基本的数据结构如 简单动态字符串（SDS）、双端链表（linkedlist）、字典（dict）、跳跃表（skiplist）、压缩列表（ziplist）、整数集合（intset） 等，由这些数据结构的一种或多种（作为编码方式等），Redis 可以实现我们数据操作的基本单元「对象」。</p>
+<h4 id="2-Redis的各对象底层结构："><a href="#2-Redis的各对象底层结构：" class="headerlink" title="2. Redis的各对象底层结构："></a>2. Redis的各对象底层结构：</h4><p>所有redis的对象都由一个 redisObject 结构表示，有如下几个与数据有关的字段：<br>unsigned type &#x2F;&#x2F; 类型（如 String、List、Hash等）<br>unsigned encoding &#x2F;&#x2F; 编码方式（底层数据结构的实现方式）<br>void *ptr; &#x2F;&#x2F; 指向底层数据结构的指针<br>&#x2F;&#x2F; … 其他字段</p>
+<ul>
+<li><p>String 字符串对象<br>编码方式<br>int： 存储可以用 long 表示的整数<br>embstr： 浮点数、超过 long 范围的整数、或者一个字符串，但要求字符串 len 小于等于 39 字节。 embstr 结构与<br>raw（即用 SDS 存储）： 浮点数、超过 long 范围的整数、或者一个字符串，无长度限制</p>
+</li>
+<li><p>List 列表对象<br>每个结点都是一个 String 字符串对象<br>当所有元素的 len 都小于 64 字节，并且总的元素个数小于 512 个，则优先采用 ziplist 编码，否则转化为 linkedlist 编码</p>
+</li>
+<li><p>Hash 哈希对象<br>保存一个个键值对，键值对的键和值均为 String 字符串对象<br>当所有元素的 len 都小于 64 字节，并且总的元素个数小于 512 个，则优先采用 ziplist 编码，否则转化为 hashtable 编码</p>
+</li>
+<li><p>Set 集合对象<br>保存一个个元素，元素可以是整数值（当使用 intset 编码时），也可以是一个 String 字符串对象<br>当所有元素的都是整数值，并且总的元素个数小于 512 个，则优先采用 intset 编码，否则转化为 hashtable 编码</p>
+</li>
+<li><p>ZSet 有序集合对象<br>保存一个个元素，每个元素的「名字」member 是一个 String 字符串对象，而其对应的「分值」 score 是一个 String 字符串对象表示的浮点数。<br>每个元素的「名字」和「分值」的映射关系存储在一个字典 dict 中<br>而每个元素的顺序关系则以 ziplist 或 skiplist 实现，当所有元素的「名字」的 len 都小于 64 字节，并且总的元素个数小于 128 个，则优先采用 ziplist 编码，否则转化为 skiplist 编码</p>
+</li>
+</ul>
+<h4 id="3-缓存雪崩、击穿、穿透解决方法："><a href="#3-缓存雪崩、击穿、穿透解决方法：" class="headerlink" title="3. 缓存雪崩、击穿、穿透解决方法："></a>3. 缓存雪崩、击穿、穿透解决方法：</h4><ul>
+<li><p>缓存雪崩<br>大量缓存到达了过期时间，导致请求都打到了数据库中，短时间内大量访问使数据库宕机。<br>解决：</p>
+<ol>
+<li>redis cluster 多增加几台服务器</li>
+<li>限流降级 缓存失效后，通过加锁或者 <strong>队列</strong> 来限制数据库执行缓存写操作的线程数量、限制客户端访问缓存的线程数量。实现 1 key 同时只被 1 个线程写、或者查询</li>
+<li>数据预热 预先访问一些可能的数据，错开刷新缓存时间，（或者）给缓存设置不同的过期时间（比如在一个范围内随机），让缓存失效在时间上均匀分布</li>
+</ol>
+</li>
+<li><p>缓存击穿<br>类似雪崩，但是发生在单个 key 上<br>解决：</p>
+<ol>
+<li>设置热点数据永不过期</li>
+<li>限流降级 数据库层面给这个 key 的访问加锁</li>
+</ol>
+</li>
+<li><p>缓存穿透<br>大量用户查询的数据在数据库中没有，导致缓存不命中，又导致大量对数据库的访问。<br>解决：</p>
+<ol>
+<li>布隆过滤器：预先存储可能查询的 key 对应的多次 hash 值。拦截不符合的查询请求。<br>布隆过滤器将 key 值用 k 个哈希函数依次运算，将每次运算后对应的数字所在的下标位置 1 。<br>缺点：不好删除；会有误判，但只要误判率足够低，也不会很影响数据库性能。</li>
+<li>缓存空对象：一次不命中后，缓存该 key，但 value 为 null，设置过期时间，后续对此 key 的查询会拦截在缓存层。<br>缺点：缓存里会有很多空对象，占用内存；缓存层和数据层会有一段时间不一致。</li>
+</ol>
+</li>
+</ul>
+<h4 id="4-持久化策略原理、实现细节及应用场景："><a href="#4-持久化策略原理、实现细节及应用场景：" class="headerlink" title="4. 持久化策略原理、实现细节及应用场景："></a>4. 持久化策略原理、实现细节及应用场景：</h4><ul>
+<li>RDB 持久化<br>通过 save、bgsave 指令，间接调用 rdbSave 函数，将当前内存中的数据快照进一个临时 RDB 文件，待持久化完毕后，覆盖原 RDB 文件。<br>RDB 在服务器启动时自动载入，但优先级落后于 AOF 文件，在 AOF 持久化关闭时，才会执行 RDB 文件的载入。<br>触发机制：<ol>
+<li>自动间隔性保存：满足了 save 中设定的任意一个条件，即可触发自动 bgsave</li>
+<li>执行了 flushall 命令</li>
+<li>退出 Redis<br>优点：适合大规模数据恢复，效率高；对数据完整性要求不高。<br>缺点：<br>不论 save 还是 bgsave 调用子进程，持久化需要一定的时间间隔，中途宕机后会丢失最近一次持久化之后的进度；bgsave 调用的子进程会占用内存空间。<br>应用场景：定时备份、版本控制、灾难恢复</li>
+</ol>
+</li>
+<li>AOF 持久化<br>用一个 aof_buf 缓冲区记录写操作，在每次事件循环结束前，用 flushAppendOnlyFile 函数缓冲区的内容写入 AOF 文件，并判断何时进行同步（no &#x2F; everysec 默认&#x2F; always）。<br>AOF 载入：使用一个不带连接的伪客户端，重播 AOF 中的命令，直到文件载入完毕。<br>AOF 重写：将多条指令合并为一条效果相同的指令，节约空间。<br>优点：复制频率较高，不易丢失数据<br>缺点：AOF 文件大小往往远大于 RDB 文件，修复速度也较慢；AOF 运行效率也慢于 RBD。<br>应用场景：对数据完整性要求比较高的情形（希望在服务器故障后，能完全恢复到故障前的状态）</li>
+</ul>
+<h4 id="5-主从复制原理及故障恢复："><a href="#5-主从复制原理及故障恢复：" class="headerlink" title="5. 主从复制原理及故障恢复："></a>5. 主从复制原理及故障恢复：</h4><ul>
+<li><p><strong>完整重同步</strong>：客户端向从服务器发送 slaveof 命令 - 从服务器执行同步，向主服务器发送 sync 命令 - 主服务器执行 bgsave 生成 RDB 文件，同时用一个缓冲区记录当前开始的写命令（类似 AOF） - 待 bgsave 执行完毕，主服务器将 RDB 文件发送给从服务器，从服务器载入这个 RDB 文件 - 主服务器接着将缓冲区的命令发送给从服务器，从服务器重播这些命令，完成同步<br>完成同步后，还要搭配 <strong>命令传播</strong>，保证一段时间内的主从一致<br>缺点：断线后复制，需要完整复制整个 RDB 文件，而从服务器断线前的大部分数据全部作废，非常浪费性能。</p>
+</li>
+<li><p>新版本：用 psync 代替 sync，完整重同步与 sync 无区别，但断线后重复制，则采用 <strong>部分重同步</strong>：</p>
+<ol>
+<li>主、从服务器分别维护自己的 <strong>复制偏移量</strong> offset，主服务器接收新数据就更新，并将数据通过命令传播到从服务器，帮助其更新。</li>
+<li>主服务器维护一个固定长度的队列 <strong>复制积压缓冲区</strong>，写命令传播的同时，也会写入缓冲区，缓冲区中标明写命令及其对应的复制偏移量。</li>
+<li>每个服务器启动时会生成一个 <strong>服务器运行 ID</strong> run ID，由随机的 40 个十六进制字符组成。从服务器在首次对主服务器进行复制时，会保存由主服务器发出的 run ID，以备后续校验。</li>
+<li>这样，当从服务器重连后，发送自己保存的 run ID 以及其复制偏移量 offset 给主服务器，主服务器核对两者满足条件（run ID 为自己的 run ID，且 offset 落在缓冲区内），只需实现部分重同步，主服务器将缓冲区内数据发送给从服务器即可；否则，执行完整重同步。</li>
+</ol>
+</li>
+</ul>
+<h4 id="6-分布式锁："><a href="#6-分布式锁：" class="headerlink" title="6. 分布式锁："></a>6. 分布式锁：</h4><ul>
+<li>分布式锁用于解决并发竞争 key 的问题。Redis 中利用 setnx 实现。</li>
+</ul>
+<p>获得锁：用一些不同名字的 key 标记不同业务需要用到的锁，利用 setnx 完成对 key（锁） 的操作，键不存在，操作成功返回 1，则认为没有竞争，可以正常进行后续的业务操作；否则，操作失败。<br>解锁：完成业务逻辑后需要执行 del(key) 操作，释放锁。<br>锁超时：获得锁时使用 expire 命令给锁设置超时时间，即使因为某些故障没有释放锁，锁也会自动释放。</p>
+<p>缺点1：setnx 与 expire 不是原子操作，中途故障会导致锁永远无法释放。<br>改进：用 lua 脚本将其原子化，或者使用最新 redis 版本，支持 SET key value EX seconds PX milliseconds NX</p>
+<p>缺点2：锁误解除，线程获取锁后执行用时超过 expire 时间，锁被其他线程获取，但原线程完成工作后删除此锁。<br>改进：将 key 对应的 value 设置为一个标识符标识所属线程，线程只能删除对应自己标识符的锁。</p>
+<p>缺点3：超时解锁导致并发，线程获取锁后工作超时，其他线程获取锁后与原线程产生竞争。<br>改进：过期时间设置得足够长，或者为获取到锁的线程增加守护线程，为将过期的锁自动续期。</p>
+<p>缺点4：不可重入，线程已持有锁的情况下再次请求加锁，如果不可重入的话会导致操作失败。<br>改进1：在 Redis Map 结构中设置重入次数，加锁时增 1，解锁时减 1，归 0 时释放。</p>
+<p>缺点5：不支持等待锁释放<br>改进：客户端轮询，未获取到锁时等待一段时间后重试，直到获取成功或者超时；使用 Redis 发布订阅功能，获取失败时，订阅该 key 的释放（Del）消息，获取成功后释放时，发送释放消息。</p>
+<ul>
+<li>也可使用 redlock 红锁实现分布式锁。</li>
+</ul>
+<h4 id="7-缓存（Redis）与数据库的一致性问题："><a href="#7-缓存（Redis）与数据库的一致性问题：" class="headerlink" title="7. 缓存（Redis）与数据库的一致性问题："></a>7. 缓存（Redis）与数据库的一致性问题：</h4><ul>
+<li>缓存设置过期时间</li>
+<li>先更新 DB 还是先更新缓存？ <ul>
+<li>应该先更新 DB，因为多数时候我们以实际 DB 为准，先更新 DB 保证了基准数据一致。缓存不一致只是暂时的；如果反过来先更新缓存，那么当更新 DB 失败时（更新 DB 所花费的时间更长），这个缓存不一致的时间就会更长。</li>
+</ul>
+</li>
+<li>旧缓存要淘汰还是更新？<ul>
+<li>应该采用淘汰机制，当发生针对数据库的 DML 写操作时，直接淘汰缓存中对应的 key。<br>这样虽然会触发一次 miss，但实现逻辑简单。</li>
+<li>并且应对缓存与数据库多次交互的情形，淘汰缓存性能更佳，更适合串行化。如果采用更新机制，需要处理复杂的并发写问题、DB 交互查询等问题。</li>
+</ul>
+</li>
+<li>使用重试机制，确保淘汰缓存和数据库更新操作能够完成。</li>
+<li>采用「先淘汰缓存，后更新数据库」的策略，采用订阅 binlog 的方式异步更新缓存，也能较好保证数据一致性。</li>
+<li>采用「先更新数据库，后淘汰缓存」策略，无论同步更新还是异步更新缓存，都能较好保证数据一致性，但需要用「重试机制」，确保缓存淘汰失败时能重试直到成功。</li>
+</ul>
+<h4 id="n-题目："><a href="#n-题目：" class="headerlink" title="n. 题目："></a>n. 题目：</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roomay.github.io/pages/2021/07/13/Redis/" data-id="cl6c1l2tj00b9iov54tg5e7p3" data-title="Redis 基础知识" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/13/Network/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          计算机网络基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/13/MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL基础知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFS/" style="font-size: 12.73px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.64px;">BST</a> <a href="/tags/DFS/" style="font-size: 17.27px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.91px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 17.27px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 14.55px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.82px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 15.45px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 19.09px;">动态规划</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.91px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 18.18px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.73px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 17.27px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 16.36px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 18.18px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.82px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.82px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 19.09px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.82px;">层序遍历</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.91px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.91px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.64px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.82px;">校招</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">框架</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.91px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.73px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.91px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 19.09px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/05/Thrift/">Thrift 相关知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/17/Interview-Flexport/">Flexport 面试</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/03/Distributed/">分布式系统、消息中间件相关</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/2022-%E9%9D%A2%E7%BB%8F-md/">2022 他人面经.md</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Roomay<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

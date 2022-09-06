@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java 基础知识、JVM、Java多线程 | Road Ahead to A Programmer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JVM 与 Java 多线程基础知识校招面经整理、热身">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基础知识、JVM、Java多线程">
+<meta property="og:url" content="https://roomay.github.io/pages/2021/07/13/Java/index.html">
+<meta property="og:site_name" content="Road Ahead to A Programmer">
+<meta property="og:description" content="JVM 与 Java 多线程基础知识校招面经整理、热身">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-13T15:02:30.000Z">
+<meta property="article:modified_time" content="2021-07-13T15:02:30.000Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="八股文">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="JVM">
+<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="Java 基础知识">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Road Ahead to A Programmer</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/13/Java/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T15:02:30.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java 基础知识、JVM、Java多线程
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+	<!-- Table of Contents -->
+	
+	  <div id="toc" class="toc-article">
+    		<strong class="toc-title">目录</strong>
+    		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9A"><span class="toc-text">1. 线程池：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-%E7%BA%BF%E7%A8%8B%E6%B1%A0-ThreadPoolExecutor%E7%B1%BB%EF%BC%9A"><span class="toc-text">1.4 线程池 ThreadPoolExecutor类：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-%E7%BA%BF%E7%A8%8B%E6%B1%A0-ThreadPoolExecutor%E7%B1%BB%EF%BC%9A"><span class="toc-text">1.5 线程池 ThreadPoolExecutor类：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-5-1-%E4%B8%83%E5%A4%A7%E5%8F%82%E6%95%B0"><span class="toc-text">1.5.1 七大参数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#1-5-2-4%E7%A7%8D%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5"><span class="toc-text">1.5.2 4种拒绝策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BA%BF%E7%A8%8B%E6%9C%89%E5%87%A0%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="toc-text">2. 线程有几种状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84-HashMap%EF%BC%9A"><span class="toc-text">3. 实现一个线程安全的 HashMap：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Synchronized-%E9%94%81%E8%86%A8%E8%83%80%EF%BC%88%E9%94%81%E8%86%A8%E8%83%80%EF%BC%89%E6%9C%BA%E5%88%B6%E7%9B%B8%E5%85%B3%EF%BC%88%E9%98%BF%E9%87%8C%E9%AB%98%E9%A2%91%E9%A2%98%EF%BC%89%EF%BC%9A"><span class="toc-text">4. Synchronized 锁膨胀（锁膨胀）机制相关（阿里高频题）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-String%E3%80%81StringBuffer%E3%80%81StringBuilder%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">3. String、StringBuffer、StringBuilder的区别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BC%BA%E5%BC%95%E7%94%A8%E3%80%81%E8%BD%AF%E5%BC%95%E7%94%A8%E3%80%81%E5%BC%B1%E5%BC%95%E7%94%A8%E3%80%81%E8%99%9A%E5%BC%95%E7%94%A8%EF%BC%9A"><span class="toc-text">4. 强引用、软引用、弱引用、虚引用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-HashMap-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E3%80%81%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-text">5. HashMap 底层原理、添加元素的底层实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%8E%9F%E5%AD%90%E7%B1%BB-Atomic%EF%BC%9A"><span class="toc-text">6. 原子类 Atomic：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-JVM-%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E3%80%81%E8%BF%90%E8%A1%8C%E6%97%B6%E5%88%86%E5%8C%BA%E3%80%81%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89%E5%92%8C%E5%85%B1%E4%BA%AB%E5%8C%BA%E5%9F%9F%EF%BC%9A"><span class="toc-text">7. JVM 内存划分、运行时分区、线程私有和共享区域：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8-GC%EF%BC%9A"><span class="toc-text">8. 垃圾收集器 GC：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8-1-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8-GC%EF%BC%9A"><span class="toc-text">8.1 怎么理解 垃圾收集器 GC：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-2-%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="toc-text">8.2 内存分配与回收策略：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-text">内存分配</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6"><span class="toc-text">内存回收</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-3-%E7%BB%8F%E5%85%B8%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%EF%BC%9A"><span class="toc-text">8.3 经典垃圾收集器：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-4-GC-%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B"><span class="toc-text">8.4 GC 常见优化案例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-text">9. Java 多线程实现方式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-text">10. 面向对象的特性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-JVM-%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%EF%BC%9A"><span class="toc-text">11. JVM 常用工具：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%85%B3"><span class="toc-text">12. 类加载相关</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#12-1-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E6%AD%A5%E9%AA%A4"><span class="toc-text">12.1 类加载有哪些步骤</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-2-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E3%80%81%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%A8%A1%E5%9E%8B%EF%BC%9A"><span class="toc-text">12.2 类加载器、双亲委派模型：</span></a></li></ol>
+	  </div>
+	
+        <p>JVM 与 Java 多线程基础知识校招面经整理、热身</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h4 id="1-线程池："><a href="#1-线程池：" class="headerlink" title="1. 线程池："></a>1. 线程池：</h4><p>线程池使用 Executors 或者 ThreadPoolExecutor 类创建</p>
+<h5 id="1-4-线程池-ThreadPoolExecutor类："><a href="#1-4-线程池-ThreadPoolExecutor类：" class="headerlink" title="1.4 线程池 ThreadPoolExecutor类："></a>1.4 线程池 ThreadPoolExecutor类：</h5><h5 id="1-5-线程池-ThreadPoolExecutor类："><a href="#1-5-线程池-ThreadPoolExecutor类：" class="headerlink" title="1.5 线程池 ThreadPoolExecutor类："></a>1.5 线程池 ThreadPoolExecutor类：</h5><h6 id="1-5-1-七大参数"><a href="#1-5-1-七大参数" class="headerlink" title="1.5.1 七大参数"></a>1.5.1 七大参数</h6><ul>
+<li>int corePoolSzie 核心线程池大小</li>
+<li>int maximumPoolSize 最大线程数</li>
+<li>long keepAliveTime 核心线程空闲后超过这个时间，关闭线程池</li>
+<li>TimeUnit unit 存活时间单位</li>
+<li>BlockingQueue<Runnable> workQueue 阻塞队列，当工作的线程数超过 corePoolSzie，此时新加入的线程、以及调用了一些阻塞函数后，当前的线程 这些线程要放入阻塞队列</li>
+<li>TreadFactory threadFactory 线程工厂：用于创建线程的类</li>
+<li><strong>RejectedExecutionHandler handler 拒绝策略</strong>（详见1.5.2）：阻塞队列满后对新加线程的处理方法</li>
+</ul>
+<h6 id="1-5-2-4种拒绝策略"><a href="#1-5-2-4种拒绝策略" class="headerlink" title="1.5.2 4种拒绝策略"></a>1.5.2 4种拒绝策略</h6><ul>
+<li>中断抛出异常</li>
+<li>默默丢弃任务，不进行任何通知</li>
+<li>丢弃在阻塞队列中存在时间最久的任务</li>
+<li>通知提交任务的线程，自行执行任务</li>
+</ul>
+<h4 id="2-线程有几种状态"><a href="#2-线程有几种状态" class="headerlink" title="2. 线程有几种状态"></a>2. 线程有几种状态</h4><ul>
+<li>初始：new 了一个线程后还没调用 start() 时的状态。</li>
+<li>运行态：线程调用 start() 后进入就绪队列（就绪态）；或者在就绪队列中被分配到 CPU 时间片（运行中）。这两种状态都笼统地称为运行态。</li>
+<li>阻塞：线程阻塞于锁（synchronized 修饰的方法或代码块）。</li>
+<li>等待：调用 wait() 等方法进入该状态，需要等待其他线程做出一些动作如 notify() 或者中断，否则无限期等待。</li>
+<li>超时等待：调用 sleep() 进入该状态，在计时器结束后自行继续。</li>
+<li>终止：线程执行 run() 方法完毕。</li>
+</ul>
+<h4 id="3-实现一个线程安全的-HashMap："><a href="#3-实现一个线程安全的-HashMap：" class="headerlink" title="3. 实现一个线程安全的 HashMap："></a>3. 实现一个线程安全的 HashMap：</h4><p>参考 ConcurrentHashMap 和 Hashtable 的实现<br>类 Hashtable 实现<br>给所有 HashMap 的增、删、改、查方法加 synchronized 全表锁<br>类 ConcurrentHashMap 实现<br>jdk 1.7 中加分段锁，将数组分割为若干个 segment，对 segment 加分段锁<br>因为哈希表不同的桶之间不会出现线程冲突的情形<br>jdk 1.8 中，可以只锁一个数组元素的头结点</p>
+<h4 id="4-Synchronized-锁膨胀（锁膨胀）机制相关（阿里高频题）："><a href="#4-Synchronized-锁膨胀（锁膨胀）机制相关（阿里高频题）：" class="headerlink" title="4. Synchronized 锁膨胀（锁膨胀）机制相关（阿里高频题）："></a>4. Synchronized 锁膨胀（锁膨胀）机制相关（阿里高频题）：</h4><p>之前一直拖着没看《Java 并发编程的艺术》，被阿里面试官问了这个问题一脸懵逼，其实就在开头的几个章节，栽过跟头才知道疼，赶紧翻起来结合网上一些博客快速消化一下。</p>
+<h4 id="3-String、StringBuffer、StringBuilder的区别："><a href="#3-String、StringBuffer、StringBuilder的区别：" class="headerlink" title="3. String、StringBuffer、StringBuilder的区别："></a>3. String、StringBuffer、StringBuilder的区别：</h4><ul>
+<li>String 用 final 修饰了 char[]，是不可变类，可以视为常量，若要修改的话需要生成一个新的 String 对象。</li>
+<li>StringBuffer 和 StringBuilder 的 char[] 是可变的，可以进行修改。</li>
+<li>其中 StringBuffer 的方法加了同步锁，线程安全。</li>
+<li>而 StringBuilder 的方法没有加同步锁，非线程安全，但性能较好。</li>
+</ul>
+<h4 id="4-强引用、软引用、弱引用、虚引用："><a href="#4-强引用、软引用、弱引用、虚引用：" class="headerlink" title="4. 强引用、软引用、弱引用、虚引用："></a>4. 强引用、软引用、弱引用、虚引用：</h4><p>主要用于判断对象是否可以存活。</p>
+<ul>
+<li>强引用：由 GC Roots 直接或间接引用的对象，这类对象不会被垃圾回收器回收。其中 GC Roots 包括如下对象<ul>
+<li>System Class：由 bootstrap &#x2F; system class loader 类加载器加载的类对象。</li>
+<li>JNI Local &#x2F; GLobal：本地方法中所使用的局部、全局变量。</li>
+<li>Java Local：代码中的局部变量。</li>
+<li>Thread (Block)：正在运行的线程（块）。</li>
+<li>Busy Monitor：调用了 wait() 或 notify()，或者被加了 synchronized 的对象，也就是被加锁了的对象。</li>
+<li>Java &#x2F; Natvie Stack Frame：本地方法栈、线程执行栈。</li>
+<li>Finalizable：在等待队列中等待执行 finalize() 方法的对象。</li>
+<li>Unfinalized：尚未执行 finalize() 并且不在 Finalizable 的等待队列中的对象。</li>
+<li>Unreachable：标记为 root 的对象。</li>
+<li>Unknown：标记为未知类型 root 的对象。</li>
+</ul>
+</li>
+<li>软引用：软引用可有可无，在内存足够时不会被回收，但不足时可能会被清理。</li>
+<li>弱引用：标记为下一次清理的对象，垃圾回收器在执行部分回收时会清理之，但是垃圾回收器不一定每次都能扫描到它们，因此可以存活一段时间。</li>
+<li>虚引用：用于跟踪对象与垃圾回收器的互动，其他时候相当于没有引用。</li>
+</ul>
+<h4 id="5-HashMap-底层原理、添加元素的底层实现："><a href="#5-HashMap-底层原理、添加元素的底层实现：" class="headerlink" title="5. HashMap 底层原理、添加元素的底层实现："></a>5. HashMap 底层原理、添加元素的底层实现：</h4><ul>
+<li>1.8 之前，数组 + 链表，key 的 hashCode 经过若干次扰动后得到哈希值，求余（hash &amp; (size() - 1)）之后放入数组，冲突则使用链地址法，添加元素采用头插法。<br>扩容后需要重新计算各个 key 的 hash。</li>
+<li>1.8 之后，扰动算法改进为一次扰动， hashCode 高 16 位与低 16 位 异或后获得哈希值。<br>数据结构采用 数组 + 链表&#x2F;红黑树，采用尾插法。<br>扩容：当元素个数超过 容量 * 负载因子（初始值分别为 16，0.75，负载因子是考虑了泊松分布之后在减少哈希碰撞次数以及节约空间方面取了折衷值），或者链表长度超过 8 且表中元素个数小于 64，会执行 resize，容量加倍，每个 key 的 (hash &amp; newCapacity) 结果最高位作为判断依据，等于 0 则保留原位，否则移到 原位置 + oldCapacity 的位置。<br>链表转换为红黑树：当链表长度超过 8，且表中元素个数超过 64，会将链表转换为红黑树。</li>
+</ul>
+<h4 id="6-原子类-Atomic："><a href="#6-原子类-Atomic：" class="headerlink" title="6. 原子类 Atomic："></a>6. 原子类 Atomic：</h4><p>该类具有原子、原子操作特征</p>
+<ul>
+<li>基本类型： AtomicInteger、AtomicLong、AtomicBoolean</li>
+<li>引用类型： AtomicReference、AtomicStampedReference（带有版本号控制，如 CAS 解决 ABA 问题就能用到）、AtomicMarkableReference</li>
+<li>数组类型： AtomicIntegerArray、AtomicLongArray、AtomicReferenceArray</li>
+<li>对象的属性修改类型器类型： AtomicIntegerFieldUpdater、AtomicLongFieldUpdater、AtomicReferenceFieldUpdater</li>
+</ul>
+<h4 id="7-JVM-内存划分、运行时分区、线程私有和共享区域："><a href="#7-JVM-内存划分、运行时分区、线程私有和共享区域：" class="headerlink" title="7. JVM 内存划分、运行时分区、线程私有和共享区域："></a>7. JVM 内存划分、运行时分区、线程私有和共享区域：</h4><ul>
+<li>堆（线程共享）：主要存放对象实例（包括类对象，就是类加载的产品，静态变量就存在类对象中）以及常量池。垃圾回收器 GC 也主要针对这个区域工作。</li>
+<li>方法区（jdk 1.8 以后实现方式改变，改为直接内存中的元空间，常量池从方法区移到了堆内存中）：主要存放类信息（类的元数据 meta，包括方法名等）</li>
+<li>虚拟机栈（线程私有）：存放函数调用所需的数据，由一个个栈帧组成，主要包括方法索引、局部变量表、输入输出参数等。调用函数对应着栈帧压入，函数返回（return 或 抛出异常）对应着栈帧弹出。</li>
+<li>本地方法栈（线程私有）：类似虚拟机栈，只不过执行的是 Native 方法。</li>
+<li>程序计数器（线程私有）：选取当前执行的字节码指令</li>
+</ul>
+<p>另外还有一部分直接内存，属于非运行时数据区，也是线程共享的</p>
+<h4 id="8-垃圾收集器-GC："><a href="#8-垃圾收集器-GC：" class="headerlink" title="8. 垃圾收集器 GC："></a>8. 垃圾收集器 GC：</h4><h5 id="8-1-怎么理解-垃圾收集器-GC："><a href="#8-1-怎么理解-垃圾收集器-GC：" class="headerlink" title="8.1 怎么理解 垃圾收集器 GC："></a>8.1 怎么理解 垃圾收集器 GC：</h5><p>这个问题很抽象，我第一次被问到时候一脸懵逼，不知道从何下手，垃圾收集器涉及 JVM 内存管理的方方面面，具体某一个问题可能还有得说，如果要给一个抽象笼统的描述反而太难了。回头翻阅《深入理解Java虚拟机》，想要从里面寻章摘句拼凑出一个「标准答案」出来。<br>如果现在再让我回答这个问题，我会从以下角度切入，然后由面试官展开某一方面的交流：</p>
+<p>「垃圾收集」是为了更好地支持动态内存分配，在这个过程中不外乎要解决 3 个问题：</p>
+<ul>
+<li>哪些内存需要回收？</li>
+<li>什么时候回收？</li>
+<li>如何回收？</li>
+</ul>
+<p>根据目前的垃圾收集理论，我们可以可以笼统地回答以上三个问题，分别是：</p>
+<ul>
+<li>哪些内存？ —— 使用可达性分析算法，标记 GC Roots 关联到的对象，清除其余内存。再具体点，标记方法可以分为「增量更新」和「原始快照」；根据对象与垃圾回收的互动又可以将对象引用分为「强引用」、「软引用」、「弱引用」、「虚引用」。</li>
+<li>什么时候？ —— 垃圾收集的策略，何时触发 Minor GC、Major GC、Full GC、Mixed GC？</li>
+<li>如何回收？ —— 依赖于不同垃圾收集器的具体实现。简单来说，主要涉及到 3 种算法 「标记-清除」、「标记-复制」、「标记-整理」，以及各种收集器之间的实现细节。</li>
+</ul>
+<p>对于自己熟悉的部分，可以略微展开详细说说，引导面试官提问。因为这几个部分深挖下去都是无底洞，很难雨露均沾的。面试官也只会挑自己熟悉的问。</p>
+<h5 id="8-2-内存分配与回收策略："><a href="#8-2-内存分配与回收策略：" class="headerlink" title="8.2 内存分配与回收策略："></a>8.2 内存分配与回收策略：</h5><h6 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h6><ul>
+<li>绝大多数时候，新对象优先在 Eden 区中分配，若此时发现空间不足，发起一次 Minor GC</li>
+<li>大对象（数组、字符串等需要较大连续内存的对象）直接在老年代中分配</li>
+<li>一般情况下，对象创建后分配到 Eden区，在经过一次新生代 GC 后进入 FS 或者 TS，同时对象有年龄记数，年龄记数到达阈值的对象进入老年区。</li>
+<li>动态老年判断：两个 Survivor 区中如果存在一个年龄值，该年龄值的对象所占空间之和超过 Survivor 区的一半，则这个年龄作为动态阈值，超过的对象直接进入老年区。</li>
+<li>逃逸分析当中，有些优化措施会导致对象不分配在堆中：<ul>
+<li>将不会逃逸的对象直接分配到栈上</li>
+<li>用标量替换将对象分解为基本成员变量分配到栈中</li>
+</ul>
+</li>
+<li>空间分配担保（Minor GC 发生前，老年代需要有足够区域来担保新生代中全部（部分）对象，否则要进行 Full GC）</li>
+</ul>
+<h6 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h6><ul>
+<li>Eden 区满了会触发 Minor GC，Eden 和 From Survivor 清空，存活的对象进入 To Survivor 区，超龄对象直接进入老年区，然后倒置 From 和 To 区。</li>
+<li>老年代满了会触发 Major GC。</li>
+<li>Full GC 清理整个新生代和老年代，触发条件： <ul>
+<li>执行 System.gc</li>
+<li>Eden 区执行 Minor GC 时，Survivor 已满、老年代也满</li>
+<li>gc 线程的存活对象无法放入预留空间</li>
+<li>新生代的晋升平均大小大于老年代剩余空间</li>
+</ul>
+</li>
+</ul>
+<h5 id="8-3-经典垃圾收集器："><a href="#8-3-经典垃圾收集器：" class="headerlink" title="8.3 经典垃圾收集器："></a>8.3 经典垃圾收集器：</h5><p>这些太杂了，个人认为问的可能性不大，大概了解一下几种收集器的工作区域和性能特点，重点掌握 CMS、G1，以及他们之间的主要区别就行。</p>
+<ul>
+<li><p>Serial              <strong>串行</strong>  新生代   复制算法  响应速度优先  <strong>单 CPU 环境</strong> Client 模式，简单易用效率高</p>
+</li>
+<li><p>Serial Old          <strong>串行</strong>  老年代   标记-整理 响应速度优先  <strong>单 CPU 环境</strong> Client 模式、CMS 的后备预案</p>
+</li>
+<li><p>ParNew              并行  新生代   复制算法  响应速度优先  多 CPU 环境 Server 模式、常与 CMS 配合，相当于多线程版的 Serial</p>
+</li>
+<li><p>Parrallel Scavenge  并行  新生代   复制算法  <strong>吞吐量优先</strong>   在后台运算而不需要太多交互的任务</p>
+</li>
+<li><p>Parallel Old        并行  老年代   标记-整理 <strong>吞吐量优先</strong>   在后台运算而不需要太多交互的任务</p>
+</li>
+<li><p>CMS                 <strong>并发</strong>  老年代   标记-清除 响应速度优先  集中在互联网站或者 B&#x2F;S 系统服务端上的 Java 应用</p>
+</li>
+<li><p>G1                  <strong>并发</strong>  <strong>新、老</strong>   标记-整理+复制 响应速度优先 面向服务端应用，将来替换 CMS</p>
+</li>
+<li><p>G1收集器解决了什么问题？<br>在G1收集器出现之前，CMS是常用的专注响应性的老年代收集器，CMS在大内存情况下gc pause时间长 (remark 阶段，CMS 为了确认是否有跨代引用对象会对整个堆进行扫描)，G1收集器的出现可以解决了应用在使用大内存的情况下gc pause时间长的问题，并且提供可预期的gc停顿时间。</p>
+</li>
+<li><p>G1使用什么方式解决问题？<br>G1收集器将内存化整为零，将堆内存分割成一个个大小相同的region，年轻代(eden区、survivor区)和老年代(old区)由多个物理上不连续的region组成，G1根据模型计算出回收收益最高，且开销时间不超过用户指定GC停顿时间的若干region，通过复制算法gc这些region。而在CMS中会回收整个老年代。</p>
+</li>
+</ul>
+<h5 id="8-4-GC-常见优化案例"><a href="#8-4-GC-常见优化案例" class="headerlink" title="8.4 GC 常见优化案例"></a>8.4 GC 常见优化案例</h5><p>服务器反应慢等情况</p>
+<ul>
+<li>如果不知道是哪个进程导致，可以先用 top 查看进程运行情况，确定引起资源占用的进程 pid。然后 top -Hp pid 查询该进程下的线程执行情况， jstack pid 查看线程快照，确认是否是 gc 线程引起。</li>
+<li>若是 gc 线程引起，可以用 jstat -gc vmid 查看其 <strong>实时</strong>执行情况，排查出问题的 gc 过程，针对性调优。</li>
+<li>通常 GC 策略需要在「GC 频率」 和 「停顿时间」 两者之间达成平衡，所以常见的性能问题也往往是由于这两者之间出现了失衡，总结如下：<ul>
+<li>频率过高<ul>
+<li>Full GC 频繁：Full GC 频率往往与老年代不稳定（即频繁有对象存活进入老年代）有关，考虑是否程序本身设计了许多大对象，大对象直接分配进入老年代，如果堆内存（或者老年代内存）分配不足，就会导致 Full GC 频繁。考虑增大堆内存，或者调整新生代老年代的内存大小比例。</li>
+<li>Minor GC 频繁：新生代空间太小，使用 -Xmn 参数调整。</li>
+<li>Major GC 频繁：（类似 Full GC）</li>
+</ul>
+</li>
+<li>停顿过长<ul>
+<li>Full GC 停顿过长：与频率问题对应，堆内存如果较大，程序每次进行 Full GC 时 STW 间隔就会较长。可以考虑将一台服务器拆分为多个逻辑集群，前端用反向代理进行负载均衡，这样多个逻辑节点之间的 Full GC 可以错峰进行，整体上的停顿会减轻。</li>
+<li>Minor GC 停顿过长：（不常见）</li>
+<li>Major GC 停顿过长：常见于老年代收集器，如 CMS，CMS remark 阶段会搜索整个堆确保没有跨代引用，因此 Major GC 之前会执行 Minor GC 进行预清理，由 CMSMaxAbortablePrecleanTime 参数管理其时间限制，若超过时间，会强制中止 Minor GC 进入 remark，而过多的新生代对象会导致 remark 搜索时间变长。可以用 CMSScavengeBeforeRemark 参数确保这个 Minor GC 完成，来降低 remark 的工作量。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-Java-多线程实现方式："><a href="#9-Java-多线程实现方式：" class="headerlink" title="9. Java 多线程实现方式："></a>9. Java 多线程实现方式：</h4><ul>
+<li>写一个类，继承 Thread 类，重写 run 方法</li>
+<li>实现一个 Runnable 接口，重写 run 方法，以之作为参数调用一个 new Thread 构造函数</li>
+<li>Callable 和 FutureTask 创建线程，需要重写 call 方法，此方可以有返回值，在 FutureTask 对象中可以用 get 获取此返回值</li>
+<li>线程池创建，可以用 Executors 类框架创建 ExecutorService 、Callable、ScheduledExecutorService 等来创建线程</li>
+</ul>
+<h4 id="10-面向对象的特性："><a href="#10-面向对象的特性：" class="headerlink" title="10. 面向对象的特性："></a>10. 面向对象的特性：</h4><ul>
+<li>封装：隐藏类的实例细节，只提供规定的方法供外部访问数据</li>
+<li>继承：子类继承父类的字段和方法，（private 字段可以继承，无法直接访问，可以通过父类提供的方法访问），实现代码复用。方法重写、重载</li>
+<li>多态：<ul>
+<li>引用多态，父类引用既可以指向本类对象也可指向子类对象</li>
+<li>方法多态，父类引用指向不同子对象时，调用的方法不同。</li>
+</ul>
+</li>
+</ul>
+<h4 id="11-JVM-常用工具："><a href="#11-JVM-常用工具：" class="headerlink" title="11. JVM 常用工具："></a>11. JVM 常用工具：</h4><ul>
+<li>jps：显示当前进程</li>
+<li>jstack：生成 JVM 当前时刻的线程快照。<ul>
+<li>先用 top 查看最消耗 cpu 的进程，然后用 top -Hp pid 查询进程下所有线程的运行情况</li>
+<li>再用 jstack pid 查看线程快照</li>
+</ul>
+</li>
+<li>jmap：打印指定进程的共享对象内存映像或堆内存细节，生成堆转储快照<ul>
+<li>可以 jmap -heap pid 查看堆使用情况</li>
+<li>可以 jmap -histo pid 查看堆中数量及大小</li>
+<li>可以 jmap -dump，然后 jhat -port portid，将堆转储快照详情输入到指定端口</li>
+</ul>
+</li>
+<li>jinfo：进程配置信息</li>
+<li>jstat：显示虚拟机运行状态信息<ul>
+<li>jstat -option（如 常用 gc，可以查看 gc 的运行情况） vmid interval count</li>
+</ul>
+</li>
+<li>javap：反编译代码，或查看字节码</li>
+</ul>
+<h4 id="12-类加载相关"><a href="#12-类加载相关" class="headerlink" title="12. 类加载相关"></a>12. 类加载相关</h4><p>一个类由一个类（Class）文件定义，类加载就是将这个文件载入内存，经过一系列步骤转化为可以被虚拟机使用的 Java 类。</p>
+<h5 id="12-1-类加载有哪些步骤"><a href="#12-1-类加载有哪些步骤" class="headerlink" title="12.1 类加载有哪些步骤"></a>12.1 类加载有哪些步骤</h5><ul>
+<li>加载：通过类的全限定名获取定义此类的二进制字节流，根据这个字节流代表的静态存储结构，在方法区构造一个运行时数据结构，作为方法区这个类相关数据的访问入口。</li>
+<li>验证：验证 Class 文件的字节流符合《Java 虚拟机规范》定义的约束，包括文件格式验证、元数据验证、字节码验证、符号引用验证。验证环节不是必须的，如果整个程序的代码经过了多次使用而没有出问题，可以考虑 -Xverify:none 关闭类验证措施，缩短类加载时间。</li>
+<li>准备：为类变量（即 static 变量）赋 0 值（如果还是 final 修饰的变量，可以直接赋定义值）。</li>
+<li>解析：将常量池的符号引用替换为直接引用。分为类解析（传给当前类的类加载器）、字段解析（查找 class_index 中的索引）。两种解析方式都会按继承关系「自下而上」地递归查找各个类（接口）及其父类（父接口），直到找到匹配的目标类或字段。「解析」在某些情况下可以在「初始化」之后开始。</li>
+<li>初始化：执行类类构造器 &lt;\clinit&gt;() 方法（注意区别于我们自行编写的构造方法 Constructer 对应的实例构造器 &lt;\init&gt;() 方法），该方法会为类中所有的类变量（static 变量）赋值，以及执行 static 修饰的代码块。</li>
+</ul>
+<h4 id="12-2-类加载器、双亲委派模型："><a href="#12-2-类加载器、双亲委派模型：" class="headerlink" title="12.2 类加载器、双亲委派模型："></a>12.2 类加载器、双亲委派模型：</h4><ul>
+<li>Java 的类都是由某个类加载器完成类加载步骤的，我们比较某两个类是否「相等」（如 类对象的 equals() 方法、isInstance() 方法、isAssignableFrom() 方法），先要比较这两个类是否由同一个类加载器加载。</li>
+<li>双亲委派模型是为了保证这种一致性而被提出的，其逻辑由 loadClass() 方法实现，具体来说，类加载器收到类加载请求后，会先尝试将请求委派给父类加载器完成。这样子可以保证同一个类文件，一定是由同一个类加载器加载的。按照优先级的层次关系，双亲委派模型从上到下可以分为：<ul>
+<li>启动类加载器 BootStrap Class Loader，负责加载 <JAVA_HOME>\lib 目录的类库。</li>
+<li>扩展类加载器 Extension Class Loader，负责加载 <JAVA_HOME>\lib\ext 目录的类库。</li>
+<li>应用程序类加载器 Application Class Loader，负责加载用户路径 ClassPath 上的类库。此为默认类加载器，除非用户自定义了类加载器。</li>
+<li>自定义类加载器 User Class Loader</li>
+</ul>
+</li>
+<li>双亲委派模型破坏（即不遵守双亲委派模型的情况）：双亲委派模型只是一种推荐的开发规范，不具有强制性。有些时候为了克服一些问题我们就不需要严格遵守了。<ul>
+<li>对于 JDK 1.2 以前的远古代码，用户可以重写 protected findClass() 方法，当父类加载失败时，类可以按用户的意愿进行加载。</li>
+<li>如果基础类型需要回调用户的代码，可以用「线程上下文类加载器」Thread Context ClassLoader 自定义加载。</li>
+<li>为了实现程序热部署、热替换，我们需要让每一个程序模块 Bundle 拥有自己的类加载器，这样替换时可以将整段代码连同类加载器替换掉，不需要关机重启。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roomay.github.io/pages/2021/07/13/Java/" data-id="cl6c1l2va00npiov5fnsv2ua0" data-title="Java 基础知识、JVM、Java多线程" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/20/Design/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          场景设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/13/Network/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机网络基础知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFS/" style="font-size: 12.73px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.64px;">BST</a> <a href="/tags/DFS/" style="font-size: 17.27px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.91px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 17.27px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 14.55px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.82px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 15.45px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 19.09px;">动态规划</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.91px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 18.18px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.73px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 17.27px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 16.36px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 18.18px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.82px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.82px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 19.09px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.82px;">层序遍历</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.91px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.91px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.64px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.82px;">校招</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">框架</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.91px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.73px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.91px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 19.09px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/05/Thrift/">Thrift 相关知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/17/Interview-Flexport/">Flexport 面试</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/03/Distributed/">分布式系统、消息中间件相关</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/2022-%E9%9D%A2%E7%BB%8F-md/">2022 他人面经.md</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Roomay<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

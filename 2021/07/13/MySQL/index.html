@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>MySQL基础知识 | Road Ahead to A Programmer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="MySQL基础知识校招面经整理、热身">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础知识">
+<meta property="og:url" content="https://roomay.github.io/pages/2021/07/13/MySQL/index.html">
+<meta property="og:site_name" content="Road Ahead to A Programmer">
+<meta property="og:description" content="MySQL基础知识校招面经整理、热身">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-13T14:58:09.000Z">
+<meta property="article:modified_time" content="2021-07-13T14:58:09.000Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="八股文">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="面经">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Road Ahead to A Programmer</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-MySQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/13/MySQL/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T14:58:09.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      MySQL基础知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+	<!-- Table of Contents -->
+	
+	  <div id="toc" class="toc-article">
+    		<strong class="toc-title">目录</strong>
+    		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-text">1. 聚簇索引和普通索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E5%92%8C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E6%98%AF%E5%8D%95%E7%8B%AC%E5%AD%98%E5%9C%A8%E8%A1%A8%E8%BF%98%E6%98%AF%E5%8F%A6%E5%A4%96%E5%BC%80%E4%B8%80%E4%B8%AA%E8%A1%A8%EF%BC%9A"><span class="toc-text">2. 普通索引和聚簇索引是单独存在表还是另外开一个表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-HashMap-%E5%92%8C-B-%E6%A0%91%E6%9C%89%E4%BD%95%E5%BC%82%E5%90%8C%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%80%E8%88%AC%E4%BD%BF%E7%94%A8b%E6%A0%91%E6%9D%A5%E5%BD%93%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-text">3. HashMap 和 B 树有何异同，为什么数据库一般使用b树来当索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-MySQL-%E5%90%84%E5%BC%95%E6%93%8E%E5%8F%8A%E5%85%B6%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-text">4. MySQL 各引擎及其主要区别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86%E5%8F%8A%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-text">5. 主从复制原理及步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%9B%9E%E8%A1%A8%EF%BC%9A"><span class="toc-text">6. 回表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-text">7. 覆盖索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%9A"><span class="toc-text">8. 隔离级别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">9. 并发事务带来的问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-CAS-%E5%92%8C-ABA-%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">10. CAS 和 ABA 问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-innoDB-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-b-%E6%A0%91-%E8%80%8C%E4%B8%8D%E6%98%AF-b-%E6%A0%91%E6%9D%A5%E5%BD%93%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-text">11. innoDB 为什么使用 b+ 树 而不是 b 树来当索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E4%B9%90%E8%A7%82%E9%94%81%E3%80%81%E6%82%B2%E8%A7%82%E9%94%81%E3%80%81MySQL-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-text">12. 乐观锁、悲观锁、MySQL 如何实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-MySQL-%E5%AF%B9%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88ACID%EF%BC%89%EF%BC%9A"><span class="toc-text">13. MySQL 对事务的实现（ACID）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#n-%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-text">n. 题目：</span></a></li></ol>
+	  </div>
+	
+        <p>MySQL基础知识校招面经整理、热身</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h4 id="1-聚簇索引和普通索引："><a href="#1-聚簇索引和普通索引：" class="headerlink" title="1. 聚簇索引和普通索引："></a>1. 聚簇索引和普通索引：</h4><p>聚簇索引指其 B+ 树的叶子节点包含了指向数据的指针。查询聚簇索引时，只需顺着该指针即可访问到数据。<br>普通索引指叶子节点处的索引项只是存储了某个聚簇索引的索引值，而非直接指向数据。查询普通索引时，还需额外回表 1 次，通过查到的索引值查找该聚簇索引，最终获得数据。<br>MySQL中 InnoDB 主键索引一定为聚簇索引，不设主键的话第一个唯一索引字段即为聚簇索引，没有唯一索引字段的话，使用隐藏字段自增主键作为聚簇索引。<br>由于聚簇索引在一张表中最多创建一个，所以其余索引为普通索引。</p>
+<h4 id="2-普通索引和聚簇索引是单独存在表还是另外开一个表："><a href="#2-普通索引和聚簇索引是单独存在表还是另外开一个表：" class="headerlink" title="2. 普通索引和聚簇索引是单独存在表还是另外开一个表："></a>2. 普通索引和聚簇索引是单独存在表还是另外开一个表：</h4><p>不太确定这题要问什么。尝试从叶子结点的结构来回答。</p>
+<ul>
+<li>聚簇索引的叶子结点是指向了该结点值所在的数据行的，也就是说指向了原数据表。</li>
+<li>普通索引的叶子节点则是指向了一个新表，表中存储了当前索引值对应的所有主键值。从这个角度来说，普通索引确实创建了一个新表，而聚簇索引没有（直接在原数据表的基础上以主键构建索引）</li>
+</ul>
+<h4 id="3-HashMap-和-B-树有何异同，为什么数据库一般使用b树来当索引："><a href="#3-HashMap-和-B-树有何异同，为什么数据库一般使用b树来当索引：" class="headerlink" title="3. HashMap 和 B 树有何异同，为什么数据库一般使用b树来当索引："></a>3. HashMap 和 B 树有何异同，为什么数据库一般使用b树来当索引：</h4><p>相同：好像没什么相同。<br>差异：</p>
+<ul>
+<li><p>hash<br>随机访问性能良好 O(1)<br>但不支持顺序访问，只能支持 &#x3D; 操作符，也就是等值查询，无法进行范围查询<br>无法估计两个值之间的数据行数量<br>因为无法支持排序，所以也就无法优化其 order by 操作，同时也无法使用基于排序的模糊查询</p>
+</li>
+<li><p>B 树<br>随机访问性能较好 O(logn)<br>上述 hash 索引的缺陷 B 树都能克服，因此更适合于数据库的使用场景</p>
+</li>
+</ul>
+<h4 id="4-MySQL-各引擎及其主要区别："><a href="#4-MySQL-各引擎及其主要区别：" class="headerlink" title="4. MySQL 各引擎及其主要区别："></a>4. MySQL 各引擎及其主要区别：</h4><ul>
+<li>MyISAM：5.5 版本前默认存储引擎为 MyISAM，特点是插入、查询较快，支持大文件，采用 B+ 树作为索引结构，崩溃后无法安全恢复。</li>
+<li>InnoDB：5.5 版本后的默认存储引擎，最大特点是支持事务（即满足 ACID 特性），行级锁、外键、MVCC、采用聚簇索引。</li>
+<li>Memory：表存放在内存中，提供查询中间结果的高速访问。</li>
+<li>Archive：支持高并发插入操作，适合用于记录日志等归档数据。</li>
+</ul>
+<h4 id="5-主从复制原理及步骤："><a href="#5-主从复制原理及步骤：" class="headerlink" title="5. 主从复制原理及步骤："></a>5. 主从复制原理及步骤：</h4><p>主服务器执行写操作以后，从服务器需要自动将主服务器的数据同步到自己身上。</p>
+<p>主服务器运行 binlog 线程，将数据更改写入 binlog 当中。主服务器为每个从服务器创建一个 binlog dump 线程，当 binlog 更新时，该线程通知所有的从服务器进行同步并发送 binlog 给从服务器。<br>从服务器运行 I&#x2F;O 线程，读取主服务器的 binlog，并写入从服务器的 relay log 中。<br>从服务器运行 SQL 线程，将 relay log 中的数据解析出来并在从服务器中重播。</p>
+<p>为了减轻复制操作给主服务器带来的压力，可以采用级联模式进行主从复制，用已经完成同步的从服务器为其他从服务器采取与主服务器类似的操作。</p>
+<h4 id="6-回表："><a href="#6-回表：" class="headerlink" title="6. 回表："></a>6. 回表：</h4><p>回表即查询非聚簇索引时，叶节点存储的是该数据对应的主键值，需要用此主键值查询主键索引，才能取得对应数据。</p>
+<h4 id="7-覆盖索引："><a href="#7-覆盖索引：" class="headerlink" title="7. 覆盖索引："></a>7. 覆盖索引：</h4><p>当所查询的每个字段都包含在索引当中时，查询就不需要回表了，而是可以用这些索引值直接组成查询结果返回。</p>
+<h4 id="8-隔离级别："><a href="#8-隔离级别：" class="headerlink" title="8. 隔离级别："></a>8. 隔离级别：</h4><ul>
+<li>读未提交：可以读取到未提交的写 - 脏读、幻读、不可重复读</li>
+<li>读提交：可以读取并发事务已提交的写 - 幻读、不可重复读</li>
+<li>可重复读：（MySQL 的默认隔离级别，配合 MVCC 和 Next-Key Lock 避免幻读）同一事务对同一字段的多次读结果一致，除非自身进行了修改 - 幻读</li>
+<li>串行化：（MySQL 分布式事务下采用）所有事务逐个执行，不会产生干扰</li>
+</ul>
+<h4 id="9-并发事务带来的问题："><a href="#9-并发事务带来的问题：" class="headerlink" title="9. 并发事务带来的问题："></a>9. 并发事务带来的问题：</h4><ul>
+<li>脏读：读取到了别的事务修改过的数据，但该事务回滚，修改没有生效。</li>
+<li>丢失修改：两个事务都在修改同一字段，先提交的修改被后提交的修改覆盖。</li>
+<li>不可重复读：事务内多次读同一个数据，中途这个数据被别的事务修改，导致此事务读到的数据前后不一致。</li>
+<li>幻读：类似不可重复读，但不可重复读是对同一数据不同字段的修改，幻读是在原数据之外读到了新的数据行。</li>
+</ul>
+<h4 id="10-CAS-和-ABA-问题："><a href="#10-CAS-和-ABA-问题：" class="headerlink" title="10. CAS 和 ABA 问题："></a>10. CAS 和 ABA 问题：</h4><ul>
+<li>CAS 算法就是 Compare &amp; Swap，对某个字段，我们读到了其原值 prev，并计算出需要写入的新值 cur，我们调用 CAS 进行写入，写入前要判断该字段值是否仍等于 prev，若相等则改写并返回成功；否则返回失败。</li>
+<li>ABA 问题，即普通 CAS 场景下，在我们读到原值、还未写入的这段空隙内，有其他并发事务修改了该字段，但经过一些操作又改回 prev，给我们造成了错觉——这个字段从未被修改过，因此 CAS 可以正常执行。</li>
+<li>解决方法：CAS 读取字段时同时读取该字段当前值的版本号，版本号可以是 UUID、时间戳之类的标识符，这样我们进行 ABA 修改时表现为 1A-2B-3A 对 CAS 是可见的，会返回失败。</li>
+</ul>
+<h4 id="11-innoDB-为什么使用-b-树-而不是-b-树来当索引："><a href="#11-innoDB-为什么使用-b-树-而不是-b-树来当索引：" class="headerlink" title="11. innoDB 为什么使用 b+ 树 而不是 b 树来当索引："></a>11. innoDB 为什么使用 b+ 树 而不是 b 树来当索引：</h4><ul>
+<li>b+ 树数据都在叶子节点，都在同一层；而 b 树的数据分布在各层结点中。这就导致<ul>
+<li>b+ 树查找性能更稳定</li>
+<li>b+ 树的非叶节点没有数据，所占空间更小，可以容纳更多的节点，使得树更矮更胖，IO次数更少</li>
+</ul>
+</li>
+<li>b+ 树叶节点都用指针顺序相连，支持顺序访问</li>
+</ul>
+<h4 id="12-乐观锁、悲观锁、MySQL-如何实现："><a href="#12-乐观锁、悲观锁、MySQL-如何实现：" class="headerlink" title="12. 乐观锁、悲观锁、MySQL 如何实现："></a>12. 乐观锁、悲观锁、MySQL 如何实现：</h4><ul>
+<li>乐观锁：认为数据一般情况下不会冲突，所以只在修改提交时检测冲突，若冲突则返回错误。<ul>
+<li>实现：利用自带的时间戳作为版本号，给数据加上一个隐藏字段，数据更新时会同步写入这个时间戳，提交时除了对比数据值还要比较版本号</li>
+</ul>
+</li>
+<li>悲观锁：认为数据很可能产生冲突，因此处理时全程加锁。<ul>
+<li>实现：使用自带的 for update 语句获得锁</li>
+</ul>
+</li>
+</ul>
+<h4 id="13-MySQL-对事务的实现（ACID）："><a href="#13-MySQL-对事务的实现（ACID）：" class="headerlink" title="13. MySQL 对事务的实现（ACID）："></a>13. MySQL 对事务的实现（ACID）：</h4><ul>
+<li><p>事务的基本操作是「提交」和「回滚」，MySQL支持事务的这两个功能，主要是通过对 ACID 的实现来保障的。</p>
+</li>
+<li><p>原子性 Atomicity：原子性是为了保证「回滚」功能能够成功撤销已执行的 SQL 语句，主要依靠 undo log 来实现。回滚时，对 undo log 记载的操作执行相反操作。</p>
+</li>
+<li><p>持久性 Durability：持久性是为了保证数据库即使发生了故障，已提交的事务造成的状态不会改变，主要靠 redo log 及其刷盘策略来实现。</p>
+<ul>
+<li>为了提高操作效率，MySQL 不会直接进行磁盘 I&#x2F;O，而是先将要读&#x2F;写的数据页放在 buffer pool 当中， buffer pool 中的脏页会定期刷新到磁盘。</li>
+<li>宕机时，buffer pool 中的数据即丢失，需要依靠 redo log 进行恢复。</li>
+<li>redo log 也有自己的刷盘策略，每次事务提交时能调用 fsync 将缓存中的 redo log 写入磁盘文件，同时也会将并发执行的未提交的部分事务一同刷盘；master thread 每秒刷盘；缓存空间达到一定大小的时候，也会执行刷盘（刷入系统 cache）。</li>
+<li>redo log 的刷盘是追加操作，每次只增加需要修改的部分（不像数据页刷脏，要将整个页写入硬盘），再加上是顺序 I&#x2F;O，即使每次事务的提交都至少伴随着一次磁盘 I&#x2F;O，效率也非常高。</li>
+</ul>
+</li>
+<li><p>隔离性 Isolation：隔离性是为了减少事务之间的干扰，主要依靠锁、事务隔离级别、MVCC机制来实现。</p>
+</li>
+<li><p>一致性 Consistency：注意到 AID 本质上都是为了 C 服务的，所以在保证了 AID 的前提下，只需保证一些完整性约束即可满足 C。</p>
+</li>
+</ul>
+<h4 id="n-题目："><a href="#n-题目：" class="headerlink" title="n. 题目："></a>n. 题目：</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://roomay.github.io/pages/2021/07/13/MySQL/" data-id="cl6c1l2td00auiov5gfpk9moa" data-title="MySQL基础知识" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/13/Redis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis 基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/13/DS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据结构基础知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFS/" style="font-size: 12.73px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.64px;">BST</a> <a href="/tags/DFS/" style="font-size: 17.27px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.91px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 17.27px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 14.55px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.82px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 15.45px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 19.09px;">动态规划</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.91px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 18.18px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.73px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 17.27px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 16.36px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 18.18px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.91px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.82px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.82px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 19.09px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.82px;">层序遍历</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.91px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.91px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.64px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.82px;">校招</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">框架</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.91px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.73px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.91px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 19.09px;">面经</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/05/Thrift/">Thrift 相关知识点</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/17/Interview-Flexport/">Flexport 面试</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/03/Distributed/">分布式系统、消息中间件相关</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/2022-%E9%9D%A2%E7%BB%8F-md/">2022 他人面经.md</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Roomay<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
