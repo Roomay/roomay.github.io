@@ -3,11 +3,10 @@ title: {{ title }}
 date: {{ date }}
 updated: {{ date }}
 categories:
-    - 面经热身
+    - 工作踩坑
 tags: 
-  - 八股文
+  - 工作
   - 后端
-  - 面经
 toc: true
 
 ---
