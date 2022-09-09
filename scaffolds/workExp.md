@@ -1,12 +1,14 @@
 ---
-title: 
+title: {{ title }}
+date: {{ date }}
+updated: {{ date }}
 categories:
-  - 工作踩坑
-tags:
+    - 工作踩坑
+tags: 
   - 工作
+  - 后端
 toc: true
-date:
-updated:
+
 ---
 
 [//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
