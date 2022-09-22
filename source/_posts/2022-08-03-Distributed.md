@@ -51,6 +51,7 @@ Kafka 是一种 Real-time Structured Streaming Applications 实时结构化数�
 
 * Topic：消息的组织单元，Consumer 按照 topic 订阅消息。
 * Partition：topic 中的消息实际的组织形式，将 topic 中的消息 hash 到不同的 partition 当中。
+  一个 Broker 当中可以有不同的 partition，分属于不同的 topic，每一个
 * Record：消息的格式，Key + Value + 时间戳，Key 用作 hash 映射到 partiton，value 就是我们需要的消息。
 
 ## RocketMQ 的工作原理
@@ -65,7 +66,7 @@ Kafka 是一种 Real-time Structured Streaming Applications 实时结构化数�
 * Topic：与 Kakfa 的类似，Consumer 订阅 topic 中的消息。
 * Shards：与 Parttion 类似的概念，Topic 会根据 sharding key 被 hash 到不同的 shards 当中。
 * Queue：与Partition 的概念类似，消息生产/消费都是在 Queue 中逻辑寻址。
-
+不同的是，
 
 ## Hadoop, Spark, Kafka 等系统如何处理分布式场景下的数据一致性？
 ### Hadoop 如何保证数据一致
