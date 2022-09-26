@@ -40,16 +40,47 @@ K8s 的结构跟大多数分布式系统一样，采用 Master-Slave 主从结�
 ## Kafka 的工作原理
 Kafka 是一种 Real-time Structured Streaming Applications 实时结构化数据流应用，主要实现原理是「生产者-消费者」的消息队列模型。
 
+### Kafka 架构
+* Coordinator：为 Broker、Producer、Consumer 等组件注册服务
+  * 较早版本为 Zookeeper，2.8 版本以后用内部 quorum 代替。
+* Producer：生成消息流
+  * 内部有一个个固定大小（可调）的 Batch 来作为缓冲区暂存消息，消息在满足 ACK 要求后会被完全删除。
+* Broker：暂存消息，接受用户的调度
+  * 以 Partition 为逻辑单位存储消息。一个 topic 被 hash 映射到多个 partition，这些 partition 可以放在不同 broker 上，内部有 offset 标记消息位置和顺序。
+* Consumer：从 Broker 按照 topic 订阅消息，因此，一个 topic 映射的多个 partition 都会被同一个 consumer 消费。
+
+* Topic：消息的组织单元，Consumer 按照 topic 订阅消息。
+* Partition：topic 中的消息实际的组织形式，将 topic 中的消息 hash 到不同的 partition 当中。
+  一个 Broker 当中可以有不同的 partition，分属于不同的 topic，每一个
+* Record：消息的格式，Key + Value + 时间戳，Key 用作 hash 映射到 partiton，value 就是我们需要的消息。
+
 ## RocketMQ 的工作原理
-### 架构
-* NameServer 集群：管理元数据，包括 Topic 路由信息等（类似 Kafka 较早版本的 Zookeeper），接受 Broker 集群的服务注册。发现 Producer 集群和 Consumer 集群的服务。
+之前做的项目里用到过 Kafka，因此从 Kafka 入手，尝试快速上手理解一下 RocketMQ 的原理和使用，也顺便做一下两者的对比。
+### RocketMQ 架构
+
+* NameServer 集群：管理元数据，包括 Topic 路由信息等（类似 Kafka 的 Coordinator 角色），接受 Broker 集群的服务注册。发现 Producer 集群和 Consumer 集群的服务。
 * Producer 集群：向 Broker 集群发送消息
 * Consumer 集群：从 Broker 集群消费消息
 * Broker 集群：Master-Slave 架构，存储消息
 
+* Topic：与 Kakfa 的类似，Consumer 订阅 topic 中的消息。
+* Shards：与 Parttion 类似的概念，Topic 会根据 sharding key 被 hash 到不同的 shards 当中。
+* Queue：与Partition 的概念类似，消息生产/消费都是在 Queue 中逻辑寻址。
+不同的是，
+
 ## Hadoop, Spark, Kafka 等系统如何处理分布式场景下的数据一致性？
-* Hadoop 严格来讲不是分布式系统，只是将计算任务分配到各个节点 DATa Node 当中，不同节点由 NameNode 调度，而彼此之间是相互独立的，不会出现并发错误下的一致性问题。
-* Kafka 的 Ack 机制
+### Hadoop 如何保证数据一致
+Hadoop 严格来讲不是分布式系统，只是将计算任务分配到各个节点 DATa Node 当中，不同节点由 NameNode 调度，而彼此之间是相互独立的，不会出现并发错误下的一致性问题。
+
+### Kafka 如何保证消息不出错
+Kafka 有其 ACK 确认机制和协同机制，主要发生在 Broker 和 Producer 之间。
+* Replicas 备份机制：同一个 Partition 在物理上有多个备份 Replicas（可能存放在不同 Broker 上），备份数可以在参数里调整。一组 Replicas 当中会有一个作为 leader，其余作为 follower 同步 leader 的内容作为备份。
+* Acknowledgement 确认机制：Producer 向 Broker 发送消息时会等待 Broker 确认（ACK），根据 ACK 参数的设置进行不同的响应。
+  * ACK = 0：Producer 无须等待 Broker 的确认，持续发送消息。
+  * ACK = 1：只要收到 leader replica 确认，Producer 就继续发送消息。
+  * ACK = -1：需要 partition 的所有 replicas 确认，Producer 才能继续发送消息。
+* Sync 协同机制：Broker 中 replicas 的状态，leader 会周期性检查 follower 是否在线，在线/不在线的标记为 in-Sync / Out-of-Sync。当标记为 in-Sync 的 replicas 数量小于设定的参数时，Producer 会停止发送。
+
 
 ## 云计算相关
 
