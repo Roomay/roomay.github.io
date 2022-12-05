@@ -1,695 +1,266 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Road Ahead to A Programmer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS">
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Road Ahead to A Programmer - 菜鸡码农自我修炼之路</title><meta name="author" content="Roomay"><meta name="copyright" content="Roomay"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Road Ahead to A Programmer">
 <meta property="og:url" content="https://roomay.github.io/pages/page/7/index.html">
 <meta property="og:site_name" content="Road Ahead to A Programmer">
 <meta property="og:description" content="转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS">
 <meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="Roomay">
 <meta property="article:tag" content="Java Data Structure OS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://roomay.github.io/pages/page/7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Road Ahead to A Programmer',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-05 10:05:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 6.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Road Ahead to A Programmer</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-LC0011" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/07/01/LC0011/" class="article-date">
-  <time class="dt-published" datetime="2021-07-01T12:54:23.000Z" itemprop="datePublished">2021-07-01</time>
-</a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/01/LC0011/">11. 盛最多水的容器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>双指针降低问题复杂度的维数</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/07/01/LC0011/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/07/01/LC0011/" data-id="cl6c1l2sh007viov5hej2bzjf" data-title="11. 盛最多水的容器" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0010" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0010/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T13:46:50.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0010/">10. 正则表达式匹配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>二维动态规划解决正则表达式匹配问题</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0010/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0010/" data-id="cl6c1l2sh007riov53cuy0dq8" data-title="10. 正则表达式匹配" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0009" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0009/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T13:38:02.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0009/">9. 回文数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用双端队列解决回文串判定</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0009/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0009/" data-id="cl6c1l2sh007oiov5bs3k7725" data-title="9. 回文数" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0008" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0008/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T13:25:31.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0008/">8. 字符串转换整数 (atoi)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用自动机使判断流程变得清晰</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0008/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0008/" data-id="cl6c1l2sh007kiov585crhm34" data-title="8. 字符串转换整数 (atoi)" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0007" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0007/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T13:12:50.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0007/">7. 整数反转</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>整数处理时注意大数的溢出</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0007/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0007/" data-id="cl6c1l2sh007giov5biryarel" data-title="7. 整数反转" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0006" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0006/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T13:04:06.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0006/">6. Z 字形变换</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>利用线性表结构省略访问的间隔</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0006/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0006/" data-id="cl6c1l2sh007diov56ne4hst6" data-title="6. Z 字形变换" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0005" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0005/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T10:06:27.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0005/">5. 最长回文子串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用双端队列实现回文子串判定、动态规划实现高效查找</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0005/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0005/" data-id="cl6c1l2sh0078iov5hu7i56zg" data-title="5. 最长回文子串" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0004" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0004/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T09:17:35.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0004/">4. 寻找两个正序数组的中位数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在两个有序数组间实现二分查找。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0004/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0004/" data-id="cl6c1l2sh0075iov5fb02bhp0" data-title="4. 寻找两个正序数组的中位数" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0003" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0003/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T09:14:52.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0003/">3. 无重复字符的最长子串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用哈希表优化子串的遍历与跳转，实现剪枝。</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0003/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0003/" data-id="cl6c1l2sh0071iov5815te4jo" data-title="3. 无重复字符的最长子串" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC0002" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/30/LC0002/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T09:09:32.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/30/LC0002/">2. 两数相加</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>链表基本操作</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/30/LC0002/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/30/LC0002/" data-id="cl6c1l2sh006xiov58p4k2l7z" data-title="2. 两数相加" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%B8%A9%E5%9D%91/">工作踩坑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="tag">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="tag">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="tag">连接池</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BFS/" style="font-size: 12.5px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.33px;">BST</a> <a href="/tags/DFS/" style="font-size: 16.67px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.83px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.83px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 16.67px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 14.17px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.67px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 15px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 18.33px;">动态规划</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.83px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 17.5px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.5px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 18.33px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 15.83px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 17.5px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.83px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.67px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.67px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 18.33px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.67px;">层序遍历</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10.83px;">工作</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.83px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.83px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.33px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.67px;">校招</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">框架</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">网络编程</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.83px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">连接池</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.5px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.83px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 19.17px;">面经</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/01/Paypal/">Paypal面试提纲</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/25/Connection-Pool/">后端项目中连接池的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/23/UnitTest/">编写单元测试相关</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/09/CICD/">CI/CD 流水线梳理</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/05/Thrift/">Thrift 相关知识点</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 Roomay<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">144</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Road Ahead to A Programmer</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Road Ahead to A Programmer</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0010/" title="10. 正则表达式匹配">10. 正则表达式匹配</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T13:46:50.000Z" title="Created 2021-06-30 21:46:50">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">二维动态规划解决正则表达式匹配问题
+
+//
+
+10.题目链接-来源：力扣（LeetCode）（困难）
+给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。
+‘.’ 匹配任意单个字符‘*’ 匹配零个或多个前面的那一个元素所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
+示例 1：
+输入：s &#x3D; “aa” p &#x3D; “a”输出：false解释：”a” 无法匹配 “aa” 整个字符串。
+
+####思路：本题是一道动态规划处理字符串的的经典题目。对于’.’，一个简化的考虑就是，我们设计一个方法 match(char a, char b)，当且仅当 a &#x3D; b 或者 a、b之中任意一个为’.’时返回 true 。我们用 f(i, j)表示 s截至第i - 1个字符s[i - 1]的子串，与 p截至第j - 1个字符p[j - 1]的子串 是匹配的。那么我们要考虑的问题就是，f(i + 1, j)是否成立，f(i, j + 1)是否成立。注意，f(0, n) 和 f(m, 0) 分别对应「s为空串」以及「p为空串」 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0009/" title="9. 回文数">9. 回文数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T13:38:02.000Z" title="Created 2021-06-30 21:38:02">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">用双端队列解决回文串判定
+
+//
+
+9.题目链接-来源：力扣（LeetCode）（简单）
+给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。例如，121 是回文，而 123 不是。 
+示例 1：
+输入：x &#x3D; 121输出：true
+
+####思路：首先排除负数，因为负号 ‘-‘ 只可能出现在一侧。然后想到有一种数据结构天然就很适合处理回文，那就是双向队列 Deque，Java中 LinkedList 实现了Deque接口，所以我们可以直接拿来用。将 x 逐位取余数分离出来，入队。最后不停弹出首尾元素进行比较 removeFirst() &#x3D;&#x3D; removeLast ? ，在 size() 等于0或1的时候返回即可。这样也自动规避了溢出问题。另外像题解的方法比较巧妙，只比较一半长度的回文数，但是它仍要对后半部分作出处理，所以时间上并不会有什么优势。时间复杂度：O(logn)空间复杂度：O(1)
+实现：12345678910111213141516171819 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0008/" title="8. 字符串转换整数 (atoi)">8. 字符串转换整数 (atoi)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T13:25:31.000Z" title="Created 2021-06-30 21:25:31">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">用自动机使判断流程变得清晰
+
+//
+
+8.题目链接-来源：力扣（LeetCode）（中等）
+请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C&#x2F;C++ 中的 atoi 函数）。
+函数 myAtoi(string s) 的算法如下：
+
+读入字符串并丢弃无用的前导空格
+检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数。 如果两者都不存在，则假定结果为正。
+读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。
+将前面步骤读入的这些数字转换为整数（即，”123” -&gt; 123， “0032” -&gt; 32）。如果没有读入数字，则整数为 0 。必要时更改符号（从步骤 2 开始）。
+如果整数数超过 32 位有符号整数范围 [−231,  231 − 1] ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 −231 的整数应该被固定为 −231 ，大于 231 − 1 的整数应该被固定为 231 − 1 。
+返回整数作为最终结果。 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0007/" title="7. 整数反转">7. 整数反转</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T13:12:50.000Z" title="Created 2021-06-30 21:12:50">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">整数处理时注意大数的溢出
+
+//
+
+7.题目链接-来源：力扣（LeetCode）（简单）
+给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+如果反转后整数超过 32 位的有符号整数的范围 [-$2^31$,  $2^31$ − 1] ，就返回 0。
+假设环境不允许存储 64 位整数（有符号或无符号）。 示例 1：
+输入：x &#x3D; 123输出：321
+
+####思路：大体思路就是对 x 取余加到结果数 ret 当中，ret 左移，x右移，循环迭代即可。难点在于细节，不能存储64位数据的情况下如何识别32位数据的溢出。首先确定输入范围，x本身不会溢出，那么最大位数就是十进制10位，[-$2^31$,  $2^31$ − 1]，即[-2147483648, 2147483647]。考虑一个反转后的部分结果 ret，当 ret 达到9位的，并且 x 还不为0的时候，我们就可以考虑溢出问题了。
+
+对于 ret &gt; 214748364 或者 ret &lt; -214748364 的情况，继续右移之后必然溢出，不用考虑x。
+对于 -214748364 &l ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0006/" title="6. Z 字形变换">6. Z 字形变换</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T13:04:06.000Z" title="Created 2021-06-30 21:04:06">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">利用线性表结构省略访问的间隔
+
+//
+
+6. 题目链接-来源：力扣（LeetCode）（中等）
+将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+比如输入字符串为 “PAYPALISHIRING” 行数为 3 时，排列如下：
+P   A   H   NA P L S I I GY   I   R之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如：”PAHNAPLSIIGYIR”。
+请你实现这个将字符串进行指定行数变换的函数：string convert(string s, int numRows); 示例 1：
+输入：s &#x3D; “PAYPALISHIRING”, numRows &#x3D; 3输出：”PAHNAPLSIIGYIR”
+
+####思路：这个题要是想清楚了存储的方式和方向还是蛮简单的。首先，先考虑输出顺序，是横向输出，那么我倾向于顺着输出的方向分行存储。这里每一行用List存储就行，不论是LinkedList还是ArrayList区别不大。当然，也可以用 StringBuilder 存储，更为高效。然后是纵 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0005/" title="5. 最长回文子串">5. 最长回文子串</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T10:06:27.000Z" title="Created 2021-06-30 18:06:27">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">用双端队列实现回文子串判定、动态规划实现高效查找
+
+//
+
+5.  题目链接-来源：力扣（LeetCode） （中等）
+给你一个字符串 s，找到 s 中最长的回文子串。
+示例 1：
+输入：s &#x3D; “babad”输出：”bab”解释：”aba” 同样是符合题意的答案。
+
+####思路：这里借鉴了第3题中的『滑动窗口』思路，无非是把『无重复子串』变成了『回文子串』，自己再写一个判定回文的函数替换掉原先的条件即可即可。当然本题也能用动态规划解。我们只要初始化长度为 1 和 长度为 2 子串 的 isPalindrome 状态并记录，即可避免重复计算，优化效率。即 我们以 s 中的每一个字符为起点，向两侧扩展，只要两头碰到的字符相同，即为回文串并更新最大长度，否则即停止扩展进入下一字符。注意，我们既要以单个字符为起点，探讨奇数长度的字符串；也要以一对字符为起点。探讨偶数长度的字符串。因为我们每次扩展时长度增加 2，只能遍历奇数或者偶数中的某一种情况。时间复杂度：O(n²) 遍历一次数组复杂度O(n)，判断是否回文的函数复杂度也为O(n)空间复杂度：O(n)
+实现：1234567891 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0004/" title="4. 寻找两个正序数组的中位数">4. 寻找两个正序数组的中位数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T09:17:35.000Z" title="Created 2021-06-30 17:17:35">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">在两个有序数组间实现二分查找。
+
+//
+
+题目链接-来源：力扣（LeetCode）
+给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
+示例 1：
+输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2]输出：2.00000解释：合并数组 &#x3D; [1,2,3] ，中位数 2
+
+思路：二分法的实现需要考虑的越界条件比较多，我们考虑依次遍历。数组总长度为 len &#x3D; m + n，当总长为奇数时，中位数为中间值，否则为中间两数的平均值。为了统一中位数的表达，我们依然用两个目标指针 len &#x2F; 2 和 (len + 1) &#x2F; 2 + 1 记录中点值并取平均得到中位数，当总长为奇数时，这两个数相等，否则，这两个数为中点两侧的值。用一个计数值 i 不停计数我们遍历过的数字，用另外两个指针 i1 和 i2 分别记录两个数组中下次当前遍历位置。哪一个值更小，我们就优先排除哪个，当遍历到到 i &#x3D; len &#x2F; 2 和 i &#x3D; (len +  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0003/" title="3. 无重复字符的最长子串">3. 无重复字符的最长子串</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T09:14:52.000Z" title="Created 2021-06-30 17:14:52">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">用哈希表优化子串的遍历与跳转，实现剪枝。
+
+//
+
+3.  题目链接-来源：力扣（LeetCode） （中等）
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+输入: s &#x3D; “abcabcbb”输出: 3解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。
+
+####思路：这是一个「滑动窗口」问题。基本思路就是用一个开头下标start和一个结尾下标i来标记当前处理的区域。接下来考虑怎么判断重复问题，最直观的想法就是查找，最快的查找就是哈希表（复杂度O(1)）。那么就考虑维护一个哈希表isRepeated，存储当前子串中的字符，每次i扫过新的字符就查表，如果存在key则说明重复，不存在则将其加入；然后start前进，直到找到重复字符所在的下标，前进的同时逐个删去经过的字符在表中的记录。进一步优化：考虑最坏情况，可能存在”abcdefgg”这样的字符串，start指向’a’，当i扫过第2个’g’的时候，哈希表查到冲突，但是start需要依次扫过abcdefg才能确定冲突的位置，效率太低。优化方案：用HashMap而不是HashSet， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0002/" title="2. 两数相加">2. 两数相加</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T09:09:32.000Z" title="Created 2021-06-30 17:09:32">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">链表基本操作
+
+//
+
+2.  题目链接-来源：力扣（LeetCode） （中等）
+给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。请你将两个数相加，并以相同形式返回一个表示和的链表。你可以假设除了数字 0 之外，这两个数都不会以 0 开头。  
+示例 1：
+输入：l1 &#x3D; [2,4,3], l2 &#x3D; [5,6,4]
+输出：[7,0,8]
+解释：342 + 465 &#x3D; 807.
+
+####思路：就是实现一个简单的整数加法，比一些常见的数字处理题要简单，简单之处在于：
+
+链表形式输出，不用考虑溢出问题。
+输入是逆序，输出也是逆序，与正常手工计算的顺序相同，很直观。
+
+细节：留意一下进位即可，用一个变量carry记录是否进位
+时间复杂度：O(n)空间复杂度：O(n)
+实现：12345678910111213141516171819202122232425262728293031323334class Solution &#123;    public ListNode addTwoNumb ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/30/LC0001/" title="1. 两数之和">1. 两数之和</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-30T09:05:14.000Z" title="Created 2021-06-30 17:05:14">2021-06-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></span></div><div class="content">用哈希表降低查找的复杂度。
+
+//
+
+1. 题目链接-来源：力扣（LeetCode） （简单）
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。你可以按任意顺序返回答案。
+示例 1：
+输入：nums &#x3D; [2,7,11,15], target &#x3D; 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。
+
+####思路：给定条件查找数据的问题，很容易想到哈希表。建立一个HashMap存储nums中的数值 value 以及对应下标 index1，然后遍历数组值，再查找哈希表中 target - nums[i] 对应的 index2，打包输出即可。 注意index1和index2不能相同。时间复杂度：O(n)空间复杂度：O(n)
+实现：1234567891011121314151617class Solution &#123;    publ ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/6/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#content-inner">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#content-inner">15</a><a class="extend next" rel="next" href="/page/8/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Roomay</div><div class="author-info__description">转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">144</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/25/Connection-Pool/" title="后端项目中连接池的应用">后端项目中连接池的应用</a><time datetime="2022-09-25T05:17:19.000Z" title="Created 2022-09-25 13:17:19">2022-09-25</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/23/UnitTest/" title="编写单元测试相关">编写单元测试相关</a><time datetime="2022-09-23T08:25:20.000Z" title="Created 2022-09-23 16:25:20">2022-09-23</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/09/CICD/" title="CI/CD 流水线梳理">CI/CD 流水线梳理</a><time datetime="2022-09-09T07:38:08.000Z" title="Created 2022-09-09 15:38:08">2022-09-09</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/05/Thrift/" title="Thrift 相关知识点">Thrift 相关知识点</a><time datetime="2022-09-05T06:31:45.000Z" title="Created 2022-09-05 14:31:45">2022-09-05</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/08/17/Interview-Flexport/" title="Flexport 面试">Flexport 面试</a><time datetime="2022-08-17T10:00:40.000Z" title="Created 2022-08-17 18:00:40">2022-08-17</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/"><span class="card-category-list-name">22秋招面经总结</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/"><span class="card-category-list-name">LeetCode主站刷题小记</span><span class="card-category-list-count">52</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/"><span class="card-category-list-name">剑指Offer(第2版)刷题小记</span><span class="card-category-list-count">74</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%B8%A9%E5%9D%91/"><span class="card-category-list-name">工作踩坑</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/"><span class="card-category-list-name">面经</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/"><span class="card-category-list-name">面经热身</span><span class="card-category-list-count">10</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.21em; color: #999da3">BFS</a> <a href="/tags/BST/" style="font-size: 1.25em; color: #999fa7">BST</a> <a href="/tags/DFS/" style="font-size: 1.39em; color: #99a5b5">DFS</a> <a href="/tags/JVM/" style="font-size: 1.1em; color: #999">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 1.1em; color: #999">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/OS/" style="font-size: 1.1em; color: #999">OS</a> <a href="/tags/RPC/" style="font-size: 1.1em; color: #999">RPC</a> <a href="/tags/Redis/" style="font-size: 1.1em; color: #999">Redis</a> <a href="/tags/dfs/" style="font-size: 1.14em; color: #999a9c">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 1.14em; color: #999a9c">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 1.39em; color: #99a5b5">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 1.28em; color: #99a0aa">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 1.17em; color: #999ca0">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 1.32em; color: #99a2ae">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 1.1em; color: #999">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.5em; color: #99a9bf">动态规划</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">单元测试</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 1.1em; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 1.14em; color: #999a9c">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 1.1em; color: #999">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.43em; color: #99a6b8">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 1.21em; color: #999da3">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 1.1em; color: #999">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 1.1em; color: #999">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.46em; color: #99a8bc">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 1.35em; color: #99a3b1">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 1.1em; color: #999">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 1.43em; color: #99a6b8">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 1.14em; color: #999a9c">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 1.17em; color: #999ca0">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 1.1em; color: #999">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 1.1em; color: #999">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 1.17em; color: #999ca0">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 1.5em; color: #99a9bf">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 1.1em; color: #999">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 1.1em; color: #999">字符串比较</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">July 2021</span><span class="card-archive-list-count">50</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">84</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">144</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-05T02:05:16.061Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Roomay</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,695 +1,285 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Road Ahead to A Programmer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS">
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Road Ahead to A Programmer - 菜鸡码农自我修炼之路</title><meta name="author" content="Roomay"><meta name="copyright" content="Roomay"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Road Ahead to A Programmer">
 <meta property="og:url" content="https://roomay.github.io/pages/page/12/index.html">
 <meta property="og:site_name" content="Road Ahead to A Programmer">
 <meta property="og:description" content="转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS">
 <meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="Roomay">
 <meta property="article:tag" content="Java Data Structure OS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://roomay.github.io/pages/page/12/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Road Ahead to A Programmer',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-05 10:05:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-    <link rel="alternate" href="/atom.xml" title="Road Ahead to A Programmer" type="application/atom+xml">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 6.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Road Ahead to A Programmer</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">菜鸡码农自我修炼之路</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://roomay.github.io/pages"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-LC-Offer35" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/12/LC-Offer35/" class="article-date">
-  <time class="dt-published" datetime="2021-06-12T08:35:34.000Z" itemprop="datePublished">2021-06-12</time>
-</a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/12/LC-Offer35/">剑指 Offer 35. 复杂链表的复制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用哈希表建立索引</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/12/LC-Offer35/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/12/LC-Offer35/" data-id="cl6c1l2r7002ziov56qo1hd8x" data-title="剑指 Offer 35. 复杂链表的复制" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer34" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/12/LC-Offer34/" class="article-date">
-  <time class="dt-published" datetime="2021-06-12T08:13:52.000Z" itemprop="datePublished">2021-06-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/12/LC-Offer34/">剑指 Offer 34. 二叉树中和为某一值的路径</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>回溯，树的遍历</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/12/LC-Offer34/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/12/LC-Offer34/" data-id="cl6c1l2r7002viov52py9beip" data-title="剑指 Offer 34. 二叉树中和为某一值的路径" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer33" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer33/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T14:15:37.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer33/">剑指 Offer 33. 二叉搜索树的后序遍历序列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>树的后续遍历序列，BST</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer33/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer33/" data-id="cl6c1l2r7002siov52q42eqeg" data-title="剑指 Offer 33. 二叉搜索树的后序遍历序列" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer32III" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer32III/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T13:59:22.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer32III/">剑指 Offer 32 - III. 从上到下打印二叉树 III</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>树的层序遍历</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer32III/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer32III/" data-id="cl6c1l2r7002oiov5ctud2k3n" data-title="剑指 Offer 32 - III. 从上到下打印二叉树 III" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer32II" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer32II/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T13:43:37.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer32II/">剑指 Offer 32 - II. 从上到下打印二叉树 II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>树的层序遍历，层次遍历</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer32II/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer32II/" data-id="cl6c1l2r7002liov5158x2nd0" data-title="剑指 Offer 32 - II. 从上到下打印二叉树 II" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer32" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer32/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T13:12:22.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer32/">剑指 Offer 32 - I. 从上到下打印二叉树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>树的层序遍历，BFS</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer32/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer32/" data-id="cl6c1l2r7002eiov5bhfe8goe" data-title="剑指 Offer 32 - I. 从上到下打印二叉树" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer31" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer31/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T12:47:23.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer31/">剑指 Offer 31. 栈的压入、弹出序列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>栈的操作模拟</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer31/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer31/" data-id="cl6c1l2r7002hiov55qfldxr0" data-title="剑指 Offer 31. 栈的压入、弹出序列" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer30" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer30/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T11:48:30.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer30/">剑指 Offer 30. 包含min函数的栈</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>单调栈</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer30/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer30/" data-id="cl6c1l2r7002aiov5erdm07iw" data-title="剑指 Offer 30. 包含min函数的栈" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer29" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer29/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T10:30:47.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer29/">剑指 Offer 29. 顺时针打印矩阵</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>模拟矩阵路径进行遍历</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer29/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer29/" data-id="cl6c1l2r70023iov5cz4yat19" data-title="剑指 Offer 29. 顺时针打印矩阵" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-LC-Offer28" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/11/LC-Offer28/" class="article-date">
-  <time class="dt-published" datetime="2021-06-11T10:10:32.000Z" itemprop="datePublished">2021-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/11/LC-Offer28/">剑指 Offer 28. 对称的二叉树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>树的结构</p>
-        
-          <p class="article-more-link">
-            <a href="/2021/06/11/LC-Offer28/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://roomay.github.io/pages/2021/06/11/LC-Offer28/" data-id="cl6c1l2r70027iov53gm6fqu9" data-title="剑指 Offer 28. 对称的二叉树" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/">22秋招面经总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">LeetCode主站刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%B8%A9%E5%9D%91/">工作踩坑</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Java 基础知识</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag">KMP算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" rel="tag">全排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">八股文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" rel="tag">分组遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="tag">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" rel="tag">原地哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" rel="tag">反转链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">图的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" rel="tag">场景设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E4%B8%B2/" rel="tag">子串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">子字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" rel="tag">字符串处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" rel="tag">字符串替换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" rel="tag">字符串比较</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" rel="tag">字符串生成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" rel="tag">字符串转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" rel="tag">幂函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97/" rel="tag">排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" rel="tag">摩尔投票法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" rel="tag">整数处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" rel="tag">最小堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">有限状态自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" rel="tag">条件运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="tag">栈的操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag">树的子结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" rel="tag">树的结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" rel="tag">树的遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" rel="tag">树的镜像</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" rel="tag">模拟乘法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" rel="tag">模拟加法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" rel="tag">矩阵旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%AD%E8%B7%AF/" rel="tag">短路</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%96%E5%BC%8F/" rel="tag">竖式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">线性表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A0%81/" rel="tag">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="tag">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" rel="tag">自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" rel="tag">贪心算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" rel="tag">连接池</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" rel="tag">链表操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" rel="tag">链表查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" rel="tag">链表遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" rel="tag">除法器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BFS/" style="font-size: 12.5px;">BFS</a> <a href="/tags/BST/" style="font-size: 13.33px;">BST</a> <a href="/tags/DFS/" style="font-size: 16.67px;">DFS</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 10px;">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/OS/" style="font-size: 10px;">OS</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/dfs/" style="font-size: 10.83px;">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.83px;">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 16.67px;">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 14.17px;">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 11.67px;">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 15px;">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 10px;">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 18.33px;">动态规划</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">单元测试</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10px;">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10.83px;">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 10px;">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 17.5px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 12.5px;">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 10px;">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 18.33px;">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 15.83px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 17.5px;">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 10.83px;">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 11.67px;">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 10px;">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 10px;">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 11.67px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 18.33px;">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 10px;">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 10px;">字符串比较</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90/" style="font-size: 10px;">字符串生成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">字符串转换</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.67px;">层序遍历</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 10.83px;">工作</a> <a href="/tags/%E5%B9%82%E5%87%BD%E6%95%B0/" style="font-size: 10px;">幂函数</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10.83px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">快速排序</a> <a href="/tags/%E6%8E%92%E5%88%97/" style="font-size: 10px;">排列</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" style="font-size: 10px;">摩尔投票法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10.83px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 20px;">数据结构</a> <a href="/tags/%E6%95%B4%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 10px;">整数处理</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%A0%86/" style="font-size: 10px;">最小堆</a> <a href="/tags/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10px;">有限状态自动机</a> <a href="/tags/%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97/" style="font-size: 10px;">条件运算</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%A0%88%E7%9A%84%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">栈的操作</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的子结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84/" style="font-size: 10px;">树的结构</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 13.33px;">树的遍历</a> <a href="/tags/%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/" style="font-size: 10px;">树的镜像</a> <a href="/tags/%E6%A0%A1%E6%8B%9B/" style="font-size: 11.67px;">校招</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">框架</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">模拟</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E4%B9%98%E6%B3%95/" style="font-size: 10px;">模拟乘法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E5%8A%A0%E6%B3%95/" style="font-size: 10px;">模拟加法</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10px;">滑动窗口</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">矩阵旋转</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%9F%AD%E8%B7%AF/" style="font-size: 10px;">短路</a> <a href="/tags/%E7%AB%96%E5%BC%8F/" style="font-size: 10px;">竖式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 10px;">线性表操作</a> <a href="/tags/%E7%BC%96%E7%A0%81/" style="font-size: 10px;">编码</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">网络编程</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E6%9C%BA/" style="font-size: 10.83px;">自动机</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 10px;">贪心算法</a> <a href="/tags/%E8%BF%9E%E6%8E%A5%E6%B1%A0/" style="font-size: 10px;">连接池</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C/" style="font-size: 12.5px;">链表操作</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E6%9F%A5%E6%89%BE/" style="font-size: 10.83px;">链表查找</a> <a href="/tags/%E9%93%BE%E8%A1%A8%E9%81%8D%E5%8E%86/" style="font-size: 10px;">链表遍历</a> <a href="/tags/%E9%99%A4%E6%B3%95%E5%99%A8/" style="font-size: 10px;">除法器</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 19.17px;">面经</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/01/Paypal/">Paypal面试提纲</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/25/Connection-Pool/">后端项目中连接池的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/23/UnitTest/">编写单元测试相关</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/09/CICD/">CI/CD 流水线梳理</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/05/Thrift/">Thrift 相关知识点</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 Roomay<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">144</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Road Ahead to A Programmer</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Road Ahead to A Programmer</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/12/LC-Offer34/" title="剑指 Offer 34. 二叉树中和为某一值的路径">剑指 Offer 34. 二叉树中和为某一值的路径</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-12T08:13:52.000Z" title="Created 2021-06-12 16:13:52">2021-06-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">回溯，树的遍历
+
+//
+
+题目链接-来源：力扣（LeetCode）
+输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。
+示例:给定如下二叉树，以及目标和 target &#x3D; 22，
+          5
+         / \
+        4   8
+       /   / \
+      11  13  4
+     /  \    / \
+    7    2  5   1
+
+返回:
+[   [5,4,11,2],   [5,8,4,5]]
+
+思路：回溯算法的经典应用。我们需要从根节点开始遍历整棵树，统计当前路径上的和，同时用一个列表记录当前经历过的节点，并与target作比较，如果相等，就在结果列表中记录这个列表。每个节点都有左右两个子树，利用DFS，我们可以先递归遍历左子树，但是当该子树的递归返回的时候，我们要剪除其相关信息，因为这对我们遍历右子树没有帮助，之后，我们再递归地遍历右子树。这就是「回溯」。时间复杂度：O(n)空间复杂度：O(n)
+实现：1234567891011121 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer33/" title="剑指 Offer 33. 二叉搜索树的后序遍历序列">剑指 Offer 33. 二叉搜索树的后序遍历序列</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T14:15:37.000Z" title="Created 2021-06-11 22:15:37">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">树的后续遍历序列，BST
+
+//
+
+题目链接-来源：力扣（LeetCode）
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历结果。如果是则返回 true，否则返回 false。假设输入的数组的任意两个数字都互不相同。
+参考以下这颗二叉搜索树：
+ 5
+/ \
+
+   2   6  &#x2F;  1   3示例 1：
+输入: [1,6,3,2,5]输出: false
+
+思路：二叉搜索树（BST）的特征是，中序序列一定是按从小到大顺序排列的。也就是说，对于由相同元素组成的二叉树，其中序序列是唯一确定的（当然我们不一定非要用某种方法-比如排序-来确定中序序列，只需要知道它是唯一的即可）。那么题目就简化成，知道中序序列，知道后序序列，我们可以唯一确定一棵二叉树，并判断其是否是BST。我们考虑后序序列的特点，「左、右、根」，当前子树的根节点一定位于当前子序列（即排除了父节点的剩余序列）的最后。而BST的特点是，根节点左子树的元素都小于根节点元素，右子树元素都大于根节点元素。综合以上两点，我们可以通过后序序列递归地确定一棵树的形状：
+
+从尾部确定根节点
+从后向前对剩余序列划分左右子树，先 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer32III/" title="剑指 Offer 32 - III. 从上到下打印二叉树 III">剑指 Offer 32 - III. 从上到下打印二叉树 III</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T13:59:22.000Z" title="Created 2021-06-11 21:59:22">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">树的层序遍历
+
+//
+
+题目链接-来源：力扣（LeetCode）
+请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+例如:给定二叉树: [3,9,20,null,null,15,7],
+3
+
+   &#x2F;   9  20    &#x2F;     15   7返回其层次遍历结果：
+[  [3],  [20,9],  [15,7]]
+
+思路：此题与上一题类似，唯一的区别在于每一层需要变更一次打印的顺序。由于层序遍历限制了我们必须用队列来完成，容易想到可以方便从两端访问的数据结构就是双端队列 Deque。那么只要用一个标志记录当前层的遍历方向（从左往右，或是从右往左），即可完成题目的要求。这个标志可以是一个二元变量，每一层切换一次，也可以用当前层数的奇偶性直接判断。时间复杂度：O(n)空间复杂度：O(n)
+实现：12345678910111213141516171819202122232425262728293031323334353637class Solution &#123; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer32II/" title="剑指 Offer 32 - II. 从上到下打印二叉树 II">剑指 Offer 32 - II. 从上到下打印二叉树 II</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T13:43:37.000Z" title="Created 2021-06-11 21:43:37">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">树的层序遍历，层次遍历
+
+//
+
+题目链接-来源：力扣（LeetCode）
+从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。
+例如:给定二叉树: [3,9,20,null,null,15,7],
+3
+
+   &#x2F;   9  20    &#x2F;     15   7返回其层次遍历结果：
+[  [3],  [9,20],  [15,7]]
+
+思路：这里的层次遍历不同于常规的层序遍历，需要每一层返回一组输出结果。也就是说，我们需要有某一种方法来记录当前所在的「深度」，或者记录当前行所需要打印的元素个数，以实现分批打印。这里我使用了递归的辅助方法，记录当前进行的「深度」，当深度超过列表行数时，新建列表，否则将元素插入当前最后一行列表的末尾。较简单的实现，可以在每一行打印开始前统计队列中元素个数，按此个数打印元素，即可省去每次都统计深度的麻烦。时间复杂度：O(n)空间复杂度：O(n)
+实现：123456789101112131415161718192021222324252627class Solution &#123;    public List&l ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer32/" title="剑指 Offer 32 - I. 从上到下打印二叉树">剑指 Offer 32 - I. 从上到下打印二叉树</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T13:12:22.000Z" title="Created 2021-06-11 21:12:22">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">树的层序遍历，BFS
+
+//
+
+题目链接-来源：力扣（LeetCode）
+从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
+例如:给定二叉树: [3,9,20,null,null,15,7],
+3
+
+   &#x2F;   9  20    &#x2F;     15   7返回：
+[3,9,20,15,7]
+
+思路：树的层序遍历，本质上是图的 BFS 算法。只需要借助一个队列即可实现。一开始入队根节点，之后循环从队列中弹出节点进行访问。对访问到的节点，打印后将左右子节点依次入队，循环操作即可完成遍历。时间复杂度：O(n)空间复杂度：O(n)
+实现：1234567891011121314151617181920212223242526class Solution &#123;    public int[] levelOrder(TreeNode root) &#123;        Queue&lt;TreeNode&gt; q = new LinkedList&lt;&gt;();        List&lt;Integer&gt; output = new ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer31/" title="剑指 Offer 31. 栈的压入、弹出序列">剑指 Offer 31. 栈的压入、弹出序列</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T12:47:23.000Z" title="Created 2021-06-11 20:47:23">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">栈的操作模拟
+
+//
+
+题目链接-来源：力扣（LeetCode）
+输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。
+示例 1：
+输入：pushed &#x3D; [1,2,3,4,5], popped &#x3D; [4,5,3,2,1]输出：true解释：我们可以按以下顺序执行：push(1), push(2), push(3), push(4), pop() -&gt; 4,push(5), pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1
+
+思路：我们可以模拟入栈出栈操作，当我们成功模拟出出栈序列后，我们即可返回 true。
+
+我们按照入栈序列，循环执行入栈操作，直到发生以下情况：
+栈顶元素等于当前出栈序列指针指向的元素，那么我们就循环弹出栈顶元素并比较栈顶元素与出栈序列，直 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer30/" title="剑指 Offer 30. 包含min函数的栈">剑指 Offer 30. 包含min函数的栈</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T11:48:30.000Z" title="Created 2021-06-11 19:48:30">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">单调栈
+
+//
+
+题目链接-来源：力扣（LeetCode）
+定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的 min 函数在该栈中，调用 min、push 及 pop 的时间复杂度都是 O(1)。
+示例:
+MinStack minStack &#x3D; new MinStack();minStack.push(-2);minStack.push(0);minStack.push(-3);minStack.min();   –&gt; 返回 -3.minStack.pop();minStack.top();      –&gt; 返回 0.minStack.min();   –&gt; 返回 -2.
+
+思路：此题的难点在于如何用尽可能低的复杂度实现对当前「最小元素」的查找。我们知道「最小堆」可以实现均摊复杂度为 O(logn) 的查找最小值的方式，距离我们要求的O(1)还有距离。考虑我们每入栈一个元素，对当前栈中「最小值」的影响。假设我们压入了一个元素并且是「最小值」，我们记录这个最小值。当我们后续压入任何大于这个值的元素，都对「最小值」没有影响。只有当这个元素出栈了，或者 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer29/" title="剑指 Offer 29. 顺时针打印矩阵">剑指 Offer 29. 顺时针打印矩阵</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T10:30:47.000Z" title="Created 2021-06-11 18:30:47">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">模拟矩阵路径进行遍历
+
+//
+
+题目链接-来源：力扣（LeetCode）
+输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
+示例 1：
+输入：matrix &#x3D; [[1,2,3],[4,5,6],[7,8,9]]输出：[1,2,3,6,9,8,7,4,5]
+
+思路：由于矩阵形状相当规则，所以模拟顺时针方向遍历并不困难。关键点在于，决定何时转向，以及转向哪个方向，还有最终在何时停止。转向的时机：我们可以先判定当前前进方向上的下一个位置是否「可达」。首先需要维护一个同样大小的 visited[][] 矩阵，记录访问过的位置，若访问过，则「不可达」。另外，当下个位置发生数组越界时，同样不可达。这样我们只要在「不可达」时转向，「可达」时前进即可。方向确定：为了使代码简单，不至于对4个方向都做一次判断，我们可以维护一个类似时钟指针一样顺时针旋转的向量数组 directions[][]，这个数组里存储4个方向上的方向向量，例如， {0,1} 表示当前前进方向是上方。每次需要转向时，指针前进一位并对 4（数组长度） 求余即可进入下个方向。终止条件：我们可以计数输出的数字个数，当 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer28/" title="剑指 Offer 28. 对称的二叉树">剑指 Offer 28. 对称的二叉树</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T10:10:32.000Z" title="Created 2021-06-11 18:10:32">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">树的结构
+
+//
+
+题目链接-来源：力扣（LeetCode）
+请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
+例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+    1   &#x2F;   2   2 &#x2F; \ &#x2F; 3  4 4  3但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
+    1   &#x2F;   2   2   \      3    3
+示例 1：
+输入：root &#x3D; [1,2,2,3,4,4,3]输出：true
+
+思路：我们要判断镜像，关键在于找到每个节点应该比较的对象。对于任意两个节点 L 与 R，它们是否镜像取决于对应的子节点是否镜像，即 L.left 与 R.right， 还有 L.right 与 R.left是否镜像。于是我们可以这样递归地往下判定，直到最低层向上递归地返回判定结果。需要返回 false 的情况有
+
+两节点不全为空
+两节点均不空时值不相等
+传递镜像位置子节点返回 false 判定。时间复杂度：O(n)空间复杂度：O(n)
+
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/06/11/LC-Offer27/" title="剑指 Offer 27. 二叉树的镜像">剑指 Offer 27. 二叉树的镜像</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T10:00:24.000Z" title="Created 2021-06-11 18:00:24">2021-06-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/">剑指Offer(第2版)刷题小记</a></span></div><div class="content">树的镜像
+
+//
+
+题目链接-来源：力扣（LeetCode）
+请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+例如输入：
+     4   &#x2F;     2     7 &#x2F; \   &#x2F; 1   3 6   9镜像输出：
+     4   &#x2F;     7     2 &#x2F; \   &#x2F; 9   6 3   1
+示例 1：
+输入：root &#x3D; [4,2,7,1,3,6,9]输出：[4,7,2,9,6,3,1]
+
+思路：遍历树的各节点，每次将两棵子树交换即可。时间复杂度：O(n)空间复杂度：O(n)
+实现：1234567891011121314151617class Solution &#123;    public TreeNode mirrorTree(TreeNode root) &#123;        if (root == null) &#123;            return null;        &#125;                root.left = mirrorTree(root. ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/11/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#content-inner">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#content-inner">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#content-inner">15</a><a class="extend next" rel="next" href="/page/13/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Roomay</div><div class="author-info__description">转行码农，半路出家，分享成长路上的技术见解: C Java Data Structure OS</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">144</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/25/Connection-Pool/" title="后端项目中连接池的应用">后端项目中连接池的应用</a><time datetime="2022-09-25T05:17:19.000Z" title="Created 2022-09-25 13:17:19">2022-09-25</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/23/UnitTest/" title="编写单元测试相关">编写单元测试相关</a><time datetime="2022-09-23T08:25:20.000Z" title="Created 2022-09-23 16:25:20">2022-09-23</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/09/CICD/" title="CI/CD 流水线梳理">CI/CD 流水线梳理</a><time datetime="2022-09-09T07:38:08.000Z" title="Created 2022-09-09 15:38:08">2022-09-09</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/09/05/Thrift/" title="Thrift 相关知识点">Thrift 相关知识点</a><time datetime="2022-09-05T06:31:45.000Z" title="Created 2022-09-05 14:31:45">2022-09-05</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/08/17/Interview-Flexport/" title="Flexport 面试">Flexport 面试</a><time datetime="2022-08-17T10:00:40.000Z" title="Created 2022-08-17 18:00:40">2022-08-17</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/22%E7%A7%8B%E6%8B%9B%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/"><span class="card-category-list-name">22秋招面经总结</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/LeetCode%E4%B8%BB%E7%AB%99%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/"><span class="card-category-list-name">LeetCode主站刷题小记</span><span class="card-category-list-count">52</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%91%E6%8C%87Offer-%E7%AC%AC2%E7%89%88-%E5%88%B7%E9%A2%98%E5%B0%8F%E8%AE%B0/"><span class="card-category-list-name">剑指Offer(第2版)刷题小记</span><span class="card-category-list-count">74</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E8%B8%A9%E5%9D%91/"><span class="card-category-list-name">工作踩坑</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F/"><span class="card-category-list-name">面经</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/"><span class="card-category-list-name">面经热身</span><span class="card-category-list-count">10</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.21em; color: #999da3">BFS</a> <a href="/tags/BST/" style="font-size: 1.25em; color: #999fa7">BST</a> <a href="/tags/DFS/" style="font-size: 1.39em; color: #99a5b5">DFS</a> <a href="/tags/JVM/" style="font-size: 1.1em; color: #999">JVM</a> <a href="/tags/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 1.1em; color: #999">Java 基础知识</a> <a href="/tags/KMP%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">KMP算法</a> <a href="/tags/MySQL/" style="font-size: 1.1em; color: #999">MySQL</a> <a href="/tags/OS/" style="font-size: 1.1em; color: #999">OS</a> <a href="/tags/RPC/" style="font-size: 1.1em; color: #999">RPC</a> <a href="/tags/Redis/" style="font-size: 1.1em; color: #999">Redis</a> <a href="/tags/dfs/" style="font-size: 1.14em; color: #999a9c">dfs</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 1.14em; color: #999a9c">中序遍历</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" style="font-size: 1.39em; color: #99a5b5">二分法</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 1.28em; color: #99a0aa">位运算</a> <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/" style="font-size: 1.17em; color: #999ca0">全排列</a> <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 1.32em; color: #99a2ae">八股文</a> <a href="/tags/%E5%88%86%E7%BB%84%E9%81%8D%E5%8E%86/" style="font-size: 1.1em; color: #999">分组遍历</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 1.5em; color: #99a9bf">动态规划</a> <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">单元测试</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 1.1em; color: #999">单调栈</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 1.14em; color: #999a9c">单调队列</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E5%93%88%E5%B8%8C/" style="font-size: 1.1em; color: #999">原地哈希</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.43em; color: #99a6b8">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 1.21em; color: #999da3">双端队列</a> <a href="/tags/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" style="font-size: 1.1em; color: #999">反转链表</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 1.1em; color: #999">后序遍历</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.46em; color: #99a8bc">后端</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 1.35em; color: #99a3b1">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 1.1em; color: #999">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 1.43em; color: #99a6b8">回溯</a> <a href="/tags/%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86/" style="font-size: 1.14em; color: #999a9c">图的遍历</a> <a href="/tags/%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">场景设计</a> <a href="/tags/%E5%A0%86/" style="font-size: 1.17em; color: #999ca0">堆</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">多线程</a> <a href="/tags/%E5%AD%90%E4%B8%B2/" style="font-size: 1.1em; color: #999">子串</a> <a href="/tags/%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 1.1em; color: #999">子字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 1.17em; color: #999ca0">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" style="font-size: 1.5em; color: #99a9bf">字符串处理</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/" style="font-size: 1.1em; color: #999">字符串替换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83/" style="font-size: 1.1em; color: #999">字符串比较</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">July 2021</span><span class="card-archive-list-count">50</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">84</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">144</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-05T02:05:16.061Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Roomay</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
