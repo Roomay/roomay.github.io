@@ -106,3 +106,10 @@ deploy:
   type: git
   repo: git@github.com:Roomay/roomay.github.io.git
   branch: pages
+
+# social settings
+# formal:
+#   icon: https://imgloc.com/i/2fjrp || cat
+social:
+  # fab fa-github: https://https://github.com/Roomay || Github
+  # fas fa-envelope: mailto:roomay@foxmail.com || Email
