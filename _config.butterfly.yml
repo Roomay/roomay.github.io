@@ -85,7 +85,7 @@ favicon: /img/lanxiongxiong.jpg
 
 # Avatar (頭像)
 avatar:
-  img: https://i.328888.xyz/2023/01/14/2fjrp.jpeg	# https://imgloc.com/i/2fjrp
+  img: /img/cat.jpg	#
   effect: false
 
 # Disable all banner image
