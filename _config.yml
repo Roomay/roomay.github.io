@@ -75,6 +75,7 @@ tag_map:
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
 # 禁用文章和页面的 Nunjucks 模板解析
 meta_generator: true
+disable_nunjucks: true
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
