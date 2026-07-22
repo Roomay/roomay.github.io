@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Flexport 面试 | Road Ahead</title><meta name="author" content="Roomay"><meta name="copyright" content="Roomay"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Flexport 的风格跟大多数外企一样，主要考察做题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flexport 面试">
+<meta property="og:url" content="https://roomay.github.io/pages/2022/08/17/Interview-Flexport/index.html">
+<meta property="og:site_name" content="Road Ahead">
+<meta property="og:description" content="Flexport 的风格跟大多数外企一样，主要考察做题。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-08-17T10:00:40.000Z">
+<meta property="article:modified_time" content="2022-08-17T10:00:40.000Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="字符串处理">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="面经">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/lanxiongxiong.jpg"><link rel="canonical" href="https://roomay.github.io/pages/2022/08/17/Interview-Flexport/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Flexport 面试',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-17 18:00:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/cat.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">154</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">107</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Road Ahead</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Flexport 面试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-08-17T10:00:40.000Z" title="Created 2022-08-17 18:00:40">2022-08-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-08-17T10:00:40.000Z" title="Updated 2022-08-17 18:00:40">2022-08-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Flexport 面试"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>Flexport 的风格跟大多数外企一样，主要考察做题。</p>
+<span id="more"></span>
+
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+
+<h1 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h1><p>考察了两道算法题（第二道当场没想出来，不确定后续是否还有其他题），题本身不难，可能自己有点钻牛角尖没做出第二问。在这里记录以供复盘。</p>
+<h2 id="随机字符串生成"><a href="#随机字符串生成" class="headerlink" title="随机字符串生成"></a>随机字符串生成</h2><ul>
+<li>输入：<br>一个字符串 input，是一个由单词和空格组成的句子（无前导空格，无标点，单词之间仅以一个空格间隔，字符全是小写英文字母），以及一个整数 N 表示生成句子的单词个数。</li>
+<li>输出：<br>一个字符串 output，包含 N 个单词，这 N 个单词按照如下规则生成：在 input 句子中随机取一个单词，作为输出句子中的第一个单词，记为 word_1，（word_1 在句子中可能重复出现）。每一个 word_1 之后紧跟着的下一个单词，组成一个单词池，在这个池中继续随机抽取一个单词，作为句子的第二个单词，记为 word_2，…… 以此类推，直到句子有 N 个单词为止。<br>如果某一步取到了 input 句子的最后一个单词，则下一个单词应该为 input 的第一个单词，即 input 可以视为一个字符串循环队列，各元素之间以空格分开，最终拼接而成。<br>因为单词每次都是随机抽取的，所以对于同一个用例，每次调用的输出结果可能不同。<br>抽取单词考虑权重，即单词被抽到的概率与其在合法的结果中出现的概率成正比。</li>
+<li>样例输入：<br>input &#x3D; “it is a good sentence but is also a bad one”<br>N &#x3D; 5<br>样例输出：<br>output &#x3D; “is a good sentence but”<br>output &#x3D; “is a bad one it”<br>output &#x3D; “is also a good sentence”<br>output &#x3D; “is also a bad one”<br>output &#x3D; “sentence but it is a”<br>以上任意一条输出都是正确答案，由于开头的单词是随机取的，因此答案不限于上面这些。<br>解释：<br>第 1 个单词在所有单词中抽取，随机取到 “is”（注意 “is”、”a” 出现了 2 次，抽到的概率是其他单词的 2 倍）；”is” 在句中出现 2 次 “is a” 和 “is also”，这两个都可以作为备选结果，随机选择其中一个作为第 2 个单词，比如 “a”；”a” 之后又有 “good” 和 “bad” 两种情况，随机选择一个作为第 3 个单词，比如 “good”；”good” 之后是 “sentence”，再之后是 “but”，分别作为第 4 和第 5 个单词，然后输出。<br>其他答案同理。</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>  这题很明显可以用哈希表来做，key 为每一个单词，value 可以是一个 List&lt;String&gt;，存放该单词后面所有可能的单词（因为可能有重复元素，Set 并不适用，并且考虑权重，可以直接生成随机数然后按下标抽取）。<br>  第一次在所有单词中抽取单词作为 key，获得对应可能的下一个单词列表 List；在 List 中再抽取一个单词，作为新的 key，迭代访问该哈希表，直到抽取出 N 个单词，即可输出。<br>  细节方面，开始的字符串数组构建可以用 split() 方法，输入的正则表达式为 “\\s” 空格，将句子分割为一个字符串数组 Stirng[]。生成的字符串可以用 List&lt;String&gt; 构建，最后再用 String.join() 方法生成。<br>时间复杂度：O(n + N)，n 是 input 中包含的单词个数，因为需要遍历 n 个单词构建哈希表； N 是要求输出的 output 中包含的单词个数，因为需要迭代 N 轮，每一轮进行一次 O(1) 的查询和抽取。<br>空间复杂度：O(n)，哈希表中有 n 个作为 key 的单词，并且所有单词对应的 value 单词列表规模之和不会超过 n（仅当无重复单词时为 n），因为一共遍历 n 个单词。</p>
+<h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">solute</span><span class="params">(String input, <span class="type">int</span> N)</span> &#123;</span><br><span class="line">    <span class="comment">// Init</span></span><br><span class="line">    List&lt;String&gt; arr = Arrays.asList(input.trim().split(<span class="string">&quot;\\s+&quot;</span>));</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.size();</span><br><span class="line">    Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> arr.get(i);</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            map.put(key, <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;String&gt; next = map.get(key);</span><br><span class="line">        next.add(arr.get((i + <span class="number">1</span>) % len));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Result Build</span></span><br><span class="line">    List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(N);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Randomly get first word</span></span><br><span class="line">    <span class="type">Random</span> <span class="variable">ran</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">    List&lt;String&gt; itrList = arr;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Iteration</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> ran.nextInt(itrList.size());</span><br><span class="line">        <span class="type">String</span> <span class="variable">itr</span> <span class="operator">=</span> itrList.get(index);</span><br><span class="line">        res.add(itr);</span><br><span class="line">        itrList = map.get(itr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.join(<span class="string">&quot; &quot;</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="变式"><a href="#变式" class="headerlink" title="变式"></a>变式</h2><ul>
+<li>输入：<br>一个字符串 input，以及一个整数 N，作用与之前一样。<br>另外还有一个整数 M（M &lt; N）表示一个词组包含的单词个数。抽取新单词时，新单词应该位于当前倒数 M 个单词组成的词组之后。</li>
+<li>输出：<br>一个字符串 output，包含 N 个单词，这 N 个单词按照如下规则生成：在 input 句子中随机抽取一个由 M 个连续单词组成的词组，作为输出句子中的第 1 到第 M 个单词，并在 input 中匹配该词组，将每一次词组出现之后紧跟着的下一个单词，加入到一个待选的单词池中，在这个池中继续随机抽取一个单词，作为句子的下一个单词，此时结果中含有 M + 1 个单词。于是我们接着将第 2 到 第 M + 1 个单词组成的词组视为整体，继续在 input 中进行匹配，…… 以此类推，直到句子有 N 个单词为止。<br>input 仍可以视为一个字符串循环队列，各元素之间以空格分开，最终拼接而成。<br>因为单词每次都是随机抽取的，所以对于同一个用例，每次调用的输出结果可能不同。<br>抽取单词考虑权重，即单词被抽到的概率与其在合法的结果中出现的概率成正比。</li>
+<li>样例输入：<br>input &#x3D; “it is a good sentence but it is also a bad one”<br>N &#x3D; 5<br>M &#x3D; 2<br>样例输出：<br>output &#x3D; “it is a good sentence”<br>output &#x3D; “it is also a bad”<br>如果一开始抽到 “it is”，则只有以上输出的其中任意一条是正确答案。<br>解释：<br>前 2 个单词在所有单词中抽取，随机取到 “it is”（注意 “it is” 出现了 2 次，抽到的概率是其他单词的 2 倍）；其后出现了 “a” 和 “also”，这两个都可以作为备选结果，随机选择其中一个作为第 3 个单词，比如 “a”；现在第 2 到第 3 个单词组成的词组为 “is a”，之后只有 “good”，作为第 4 个单词；再之后是 “a good”，下一个单词为 “sentence”，作为第 5 个单词，然后输出。<br>其他答案同理。<br>前一题可以视为本题 M &#x3D; 1 的特殊情况</li>
+</ul>
+<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>  观察可以发现，不论 M 多大，考虑词组开头的第一个单词，依然是分解后的字符串数组中的任意一个单词，M 只不过是增加了匹配的精度，限定了可选的范围。<br>  因此思路仍然是哈希表不变，key 仍是字符串，只不过这个字符串是一个由 M 个单词组成的词组（含间隔空格，以排除不同单词恰好拼接成同样字符串的情况）。后续的抽取方式同前一题。<br>时间复杂度：O(nM + N)，n 是 input 中包含的单词个数，因为需要遍历 n 个单词，每次构建一个规模为 M 个单词的字符串，形成哈希表的 key； N 是要求输出的 output 中包含的单词个数，因为需要迭代 N - M + 1 轮，每一轮进行一次 O(1) 的查询和抽取。<br>空间复杂度：O(nM)，哈希表中有 n 个作为 key 的长度为 M 个单词的词组，并且所有单词对应的 value 单词列表规模之和不会超过 n（仅当无重复单词时为 n），因为一共遍历 n 个单词。</p>
+<h3 id="实现：-1"><a href="#实现：-1" class="headerlink" title="实现："></a>实现：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">solute</span><span class="params">(String input, <span class="type">int</span> N, <span class="type">int</span> M)</span> &#123;</span><br><span class="line">    <span class="comment">// Init</span></span><br><span class="line">    List&lt;String&gt; arr = Arrays.asList(input.trim().split(<span class="string">&quot;\\s+&quot;</span>));</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.size();</span><br><span class="line">    Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Build Keys</span></span><br><span class="line">    List&lt;String&gt; keySB = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; M - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        keySB.add(arr.get(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Keys and List of Next words</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        keySB.add(arr.get((i + M - <span class="number">1</span>) % len));</span><br><span class="line">        <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> String.join(<span class="string">&quot; &quot;</span>, keySB);</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            map.put(key, <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;String&gt;next = map.get(key);</span><br><span class="line">        next.add(arr.get((i + M) % len));</span><br><span class="line">        keySB.remove(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Result Build</span></span><br><span class="line">    List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Random get first index and the initial phrase</span></span><br><span class="line">    <span class="type">Random</span> <span class="variable">ran</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">    <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> ran.nextInt(len);</span><br><span class="line">    List&lt;String&gt; itrSB = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; M; i++) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">cur</span> <span class="operator">=</span> arr.get((i + index) % len);</span><br><span class="line">        itrSB.add(cur);</span><br><span class="line">        res.add(cur);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Iteration</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> M; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">itrKey</span> <span class="operator">=</span> String.join(<span class="string">&quot; &quot;</span>, itrSB);</span><br><span class="line">        List&lt;String&gt; itrList = map.get(itrKey);</span><br><span class="line"></span><br><span class="line">        index = ran.nextInt(itrList.size());</span><br><span class="line">        <span class="type">String</span> <span class="variable">nextWord</span> <span class="operator">=</span> itrList.get(index);</span><br><span class="line"></span><br><span class="line">        res.add(nextWord);</span><br><span class="line">        itrSB.add(nextWord);</span><br><span class="line">        itrSB.remove(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.join(<span class="string">&quot; &quot;</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<style type="text/css">
+    h1 { counter-reset: h2counter; }
+    h2 { counter-reset: h3counter; }
+    h3 { counter-reset: h4counter; }
+    h4 { counter-reset: h5counter; }
+    h5 { counter-reset: h6counter; }
+    h6 { }
+    h2:before {
+      counter-increment: h2counter;
+      content: counter(h2counter) ".\0000a0\0000a0";
+    }
+    h3:before {
+      counter-increment: h3counter;
+      content: counter(h2counter) "."
+                counter(h3counter) ".\0000a0\0000a0";
+    }
+    h4:before {
+      counter-increment: h4counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) ".\0000a0\0000a0";
+    }
+    h5:before {
+      counter-increment: h5counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) "."
+                counter(h5counter) ".\0000a0\0000a0";
+    }
+    h6:before {
+      counter-increment: h6counter;
+      content: counter(h2counter) "."
+                counter(h3counter) "."
+                counter(h4counter) "."
+                counter(h5counter) "."
+                counter(h6counter) ".\0000a0\0000a0";
+    }
+</style></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://roomay.github.io/pages">Roomay</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://roomay.github.io/pages/2022/08/17/Interview-Flexport/">https://roomay.github.io/pages/2022/08/17/Interview-Flexport/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/">字符串处理</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/09/05/Thrift/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Thrift 相关知识点</div></div></a></div><div class="next-post pull-right"><a href="/2022/08/03/Distributed/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">分布式系统、消息中间件相关</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/06/05/LC-Offer05/" title="剑指 Offer 05. 替换空格"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-05</div><div class="title">剑指 Offer 05. 替换空格</div></div></a></div><div><a href="/2021/06/10/LC-Offer19/" title="剑指 Offer 19. 正则表达式匹配"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-10</div><div class="title">剑指 Offer 19. 正则表达式匹配</div></div></a></div><div><a href="/2021/06/10/LC-Offer20/" title="剑指 Offer 20. 表示数值的字符串"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-10</div><div class="title">剑指 Offer 20. 表示数值的字符串</div></div></a></div><div><a href="/2021/06/14/LC-Offer45/" title="剑指 Offer 45. 把数组排成最小的数"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-14</div><div class="title">剑指 Offer 45. 把数组排成最小的数</div></div></a></div><div><a href="/2021/06/16/LC-Offer58/" title="剑指 Offer 58 - I. 翻转单词顺序"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-16</div><div class="title">剑指 Offer 58 - I. 翻转单词顺序</div></div></a></div><div><a href="/2021/06/17/LC-Offer58II/" title="剑指 Offer 58 - II. 左旋转字符串"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-17</div><div class="title">剑指 Offer 58 - II. 左旋转字符串</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/cat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Roomay</div><div class="author-info__description">工科出身，转行码农，进了银行从头学起</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">154</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">107</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/roomay"><i class="fab fa-github"></i><span>没啥好点的</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">转战体制内，会陆续更一些职业规划相关的思考，技术相关的内容会暂时断更拖更</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">一面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%9F%E6%88%90"><span class="toc-number">1.1.</span> <span class="toc-text">随机字符串生成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">1.1.2.</span> <span class="toc-text">实现：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">变式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%EF%BC%9A-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%EF%BC%9A-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">实现：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/19/Stay-Active-Stay-Alive/" title="Stay Active, Stay Alive"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Stay Active, Stay Alive"/></a><div class="content"><a class="title" href="/2026/07/19/Stay-Active-Stay-Alive/" title="Stay Active, Stay Alive">Stay Active, Stay Alive</a><time datetime="2026-07-19T15:53:52.000Z" title="Created 2026-07-19 23:53:52">2026-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/20/Invest-A-Better-World/" title="为更好的世界投资"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为更好的世界投资"/></a><div class="content"><a class="title" href="/2026/06/20/Invest-A-Better-World/" title="为更好的世界投资">为更好的世界投资</a><time datetime="2026-06-20T09:50:55.000Z" title="Created 2026-06-20 17:50:55">2026-06-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/18/%E3%80%8C%E5%AE%89%E5%85%A8%E3%80%8D%E7%9A%84%E7%94%9F%E6%B4%BB/" title="「安全」的生活"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="「安全」的生活"/></a><div class="content"><a class="title" href="/2026/04/18/%E3%80%8C%E5%AE%89%E5%85%A8%E3%80%8D%E7%9A%84%E7%94%9F%E6%B4%BB/" title="「安全」的生活">「安全」的生活</a><time datetime="2026-04-17T23:13:37.000Z" title="Created 2026-04-18 07:13:37">2026-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/" title="从500倍租售比说开去"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从500倍租售比说开去"/></a><div class="content"><a class="title" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/" title="从500倍租售比说开去">从500倍租售比说开去</a><time datetime="2026-04-05T11:19:15.000Z" title="Created 2026-04-05 19:19:15">2026-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/pricing/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/pricing/" title="No title">No title</a><time datetime="2026-04-04T16:00:00.000Z" title="Created 2026-04-05 00:00:00">2026-04-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Roomay</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

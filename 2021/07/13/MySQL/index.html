@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MySQL基础知识 | Road Ahead</title><meta name="author" content="Roomay"><meta name="copyright" content="Roomay"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MySQL基础知识校招面经整理、热身">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础知识">
+<meta property="og:url" content="https://roomay.github.io/pages/2021/07/13/MySQL/index.html">
+<meta property="og:site_name" content="Road Ahead">
+<meta property="og:description" content="MySQL基础知识校招面经整理、热身">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-13T14:58:09.000Z">
+<meta property="article:modified_time" content="2021-07-13T14:58:09.000Z">
+<meta property="article:author" content="Roomay">
+<meta property="article:tag" content="八股文">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/lanxiongxiong.jpg"><link rel="canonical" href="https://roomay.github.io/pages/2021/07/13/MySQL/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL基础知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-13 22:58:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/cat.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">154</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">107</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Road Ahead</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">MySQL基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-07-13T14:58:09.000Z" title="Created 2021-07-13 22:58:09">2021-07-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-07-13T14:58:09.000Z" title="Updated 2021-07-13 22:58:09">2021-07-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E7%BB%8F%E7%83%AD%E8%BA%AB/">面经热身</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MySQL基础知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>MySQL基础知识校招面经整理、热身</p>
+<span id="more"></span>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+<h4 id="1-聚簇索引和普通索引："><a href="#1-聚簇索引和普通索引：" class="headerlink" title="1. 聚簇索引和普通索引："></a>1. 聚簇索引和普通索引：</h4><p>聚簇索引指其 B+ 树的叶子节点包含了指向数据的指针。查询聚簇索引时，只需顺着该指针即可访问到数据。<br>普通索引指叶子节点处的索引项只是存储了某个聚簇索引的索引值，而非直接指向数据。查询普通索引时，还需额外回表 1 次，通过查到的索引值查找该聚簇索引，最终获得数据。<br>MySQL中 InnoDB 主键索引一定为聚簇索引，不设主键的话第一个唯一索引字段即为聚簇索引，没有唯一索引字段的话，使用隐藏字段自增主键作为聚簇索引。<br>由于聚簇索引在一张表中最多创建一个，所以其余索引为普通索引。</p>
+<h4 id="2-普通索引和聚簇索引是单独存在表还是另外开一个表："><a href="#2-普通索引和聚簇索引是单独存在表还是另外开一个表：" class="headerlink" title="2. 普通索引和聚簇索引是单独存在表还是另外开一个表："></a>2. 普通索引和聚簇索引是单独存在表还是另外开一个表：</h4><p>不太确定这题要问什么。尝试从叶子结点的结构来回答。</p>
+<ul>
+<li>聚簇索引的叶子结点是指向了该结点值所在的数据行的，也就是说指向了原数据表。</li>
+<li>普通索引的叶子节点则是指向了一个新表，表中存储了当前索引值对应的所有主键值。从这个角度来说，普通索引确实创建了一个新表，而聚簇索引没有（直接在原数据表的基础上以主键构建索引）</li>
+</ul>
+<h4 id="3-HashMap-和-B-树有何异同，为什么数据库一般使用b树来当索引："><a href="#3-HashMap-和-B-树有何异同，为什么数据库一般使用b树来当索引：" class="headerlink" title="3. HashMap 和 B 树有何异同，为什么数据库一般使用b树来当索引："></a>3. HashMap 和 B 树有何异同，为什么数据库一般使用b树来当索引：</h4><p>相同：好像没什么相同。<br>差异：</p>
+<ul>
+<li><p>hash<br>随机访问性能良好 O(1)<br>但不支持顺序访问，只能支持 &#x3D; 操作符，也就是等值查询，无法进行范围查询<br>无法估计两个值之间的数据行数量<br>因为无法支持排序，所以也就无法优化其 order by 操作，同时也无法使用基于排序的模糊查询</p>
+</li>
+<li><p>B 树<br>随机访问性能较好 O(logn)<br>上述 hash 索引的缺陷 B 树都能克服，因此更适合于数据库的使用场景</p>
+</li>
+</ul>
+<h4 id="4-MySQL-各引擎及其主要区别："><a href="#4-MySQL-各引擎及其主要区别：" class="headerlink" title="4. MySQL 各引擎及其主要区别："></a>4. MySQL 各引擎及其主要区别：</h4><ul>
+<li>MyISAM：5.5 版本前默认存储引擎为 MyISAM，特点是插入、查询较快，支持大文件，采用 B+ 树作为索引结构，崩溃后无法安全恢复。</li>
+<li>InnoDB：5.5 版本后的默认存储引擎，最大特点是支持事务（即满足 ACID 特性），行级锁、外键、MVCC、采用聚簇索引。</li>
+<li>Memory：表存放在内存中，提供查询中间结果的高速访问。</li>
+<li>Archive：支持高并发插入操作，适合用于记录日志等归档数据。</li>
+</ul>
+<h4 id="5-主从复制原理及步骤："><a href="#5-主从复制原理及步骤：" class="headerlink" title="5. 主从复制原理及步骤："></a>5. 主从复制原理及步骤：</h4><p>主服务器执行写操作以后，从服务器需要自动将主服务器的数据同步到自己身上。</p>
+<p>主服务器运行 binlog 线程，将数据更改写入 binlog 当中。主服务器为每个从服务器创建一个 binlog dump 线程，当 binlog 更新时，该线程通知所有的从服务器进行同步并发送 binlog 给从服务器。<br>从服务器运行 I&#x2F;O 线程，读取主服务器的 binlog，并写入从服务器的 relay log 中。<br>从服务器运行 SQL 线程，将 relay log 中的数据解析出来并在从服务器中重播。</p>
+<p>为了减轻复制操作给主服务器带来的压力，可以采用级联模式进行主从复制，用已经完成同步的从服务器为其他从服务器采取与主服务器类似的操作。</p>
+<h4 id="6-回表："><a href="#6-回表：" class="headerlink" title="6. 回表："></a>6. 回表：</h4><p>回表即查询非聚簇索引时，叶节点存储的是该数据对应的主键值，需要用此主键值查询主键索引，才能取得对应数据。</p>
+<h4 id="7-覆盖索引："><a href="#7-覆盖索引：" class="headerlink" title="7. 覆盖索引："></a>7. 覆盖索引：</h4><p>当所查询的每个字段都包含在索引当中时，查询就不需要回表了，而是可以用这些索引值直接组成查询结果返回。</p>
+<h4 id="8-隔离级别："><a href="#8-隔离级别：" class="headerlink" title="8. 隔离级别："></a>8. 隔离级别：</h4><ul>
+<li>读未提交：可以读取到未提交的写 - 脏读、幻读、不可重复读</li>
+<li>读提交：可以读取并发事务已提交的写 - 幻读、不可重复读</li>
+<li>可重复读：（MySQL 的默认隔离级别，配合 MVCC 和 Next-Key Lock 避免幻读）同一事务对同一字段的多次读结果一致，除非自身进行了修改 - 幻读</li>
+<li>串行化：（MySQL 分布式事务下采用）所有事务逐个执行，不会产生干扰</li>
+</ul>
+<h4 id="9-并发事务带来的问题："><a href="#9-并发事务带来的问题：" class="headerlink" title="9. 并发事务带来的问题："></a>9. 并发事务带来的问题：</h4><ul>
+<li>脏读：读取到了别的事务修改过的数据，但该事务回滚，修改没有生效。</li>
+<li>丢失修改：两个事务都在修改同一字段，先提交的修改被后提交的修改覆盖。</li>
+<li>不可重复读：事务内多次读同一个数据，中途这个数据被别的事务修改，导致此事务读到的数据前后不一致。</li>
+<li>幻读：类似不可重复读，但不可重复读是对同一数据不同字段的修改，幻读是在原数据之外读到了新的数据行。</li>
+</ul>
+<h4 id="10-CAS-和-ABA-问题："><a href="#10-CAS-和-ABA-问题：" class="headerlink" title="10. CAS 和 ABA 问题："></a>10. CAS 和 ABA 问题：</h4><ul>
+<li>CAS 算法就是 Compare &amp; Swap，对某个字段，我们读到了其原值 prev，并计算出需要写入的新值 cur，我们调用 CAS 进行写入，写入前要判断该字段值是否仍等于 prev，若相等则改写并返回成功；否则返回失败。</li>
+<li>ABA 问题，即普通 CAS 场景下，在我们读到原值、还未写入的这段空隙内，有其他并发事务修改了该字段，但经过一些操作又改回 prev，给我们造成了错觉——这个字段从未被修改过，因此 CAS 可以正常执行。</li>
+<li>解决方法：CAS 读取字段时同时读取该字段当前值的版本号，版本号可以是 UUID、时间戳之类的标识符，这样我们进行 ABA 修改时表现为 1A-2B-3A 对 CAS 是可见的，会返回失败。</li>
+</ul>
+<h4 id="11-innoDB-为什么使用-b-树-而不是-b-树来当索引："><a href="#11-innoDB-为什么使用-b-树-而不是-b-树来当索引：" class="headerlink" title="11. innoDB 为什么使用 b+ 树 而不是 b 树来当索引："></a>11. innoDB 为什么使用 b+ 树 而不是 b 树来当索引：</h4><ul>
+<li>b+ 树数据都在叶子节点，都在同一层；而 b 树的数据分布在各层结点中。这就导致<ul>
+<li>b+ 树查找性能更稳定</li>
+<li>b+ 树的非叶节点没有数据，所占空间更小，可以容纳更多的节点，使得树更矮更胖，IO次数更少</li>
+</ul>
+</li>
+<li>b+ 树叶节点都用指针顺序相连，支持顺序访问</li>
+</ul>
+<h4 id="12-乐观锁、悲观锁、MySQL-如何实现："><a href="#12-乐观锁、悲观锁、MySQL-如何实现：" class="headerlink" title="12. 乐观锁、悲观锁、MySQL 如何实现："></a>12. 乐观锁、悲观锁、MySQL 如何实现：</h4><ul>
+<li>乐观锁：认为数据一般情况下不会冲突，所以只在修改提交时检测冲突，若冲突则返回错误。<ul>
+<li>实现：利用自带的时间戳作为版本号，给数据加上一个隐藏字段，数据更新时会同步写入这个时间戳，提交时除了对比数据值还要比较版本号</li>
+</ul>
+</li>
+<li>悲观锁：认为数据很可能产生冲突，因此处理时全程加锁。<ul>
+<li>实现：使用自带的 for update 语句获得锁</li>
+</ul>
+</li>
+</ul>
+<h4 id="13-MySQL-对事务的实现（ACID）："><a href="#13-MySQL-对事务的实现（ACID）：" class="headerlink" title="13. MySQL 对事务的实现（ACID）："></a>13. MySQL 对事务的实现（ACID）：</h4><ul>
+<li><p>事务的基本操作是「提交」和「回滚」，MySQL支持事务的这两个功能，主要是通过对 ACID 的实现来保障的。</p>
+</li>
+<li><p>原子性 Atomicity：原子性是为了保证「回滚」功能能够成功撤销已执行的 SQL 语句，主要依靠 undo log 来实现。回滚时，对 undo log 记载的操作执行相反操作。</p>
+</li>
+<li><p>持久性 Durability：持久性是为了保证数据库即使发生了故障，已提交的事务造成的状态不会改变，主要靠 redo log 及其刷盘策略来实现。</p>
+<ul>
+<li>为了提高操作效率，MySQL 不会直接进行磁盘 I&#x2F;O，而是先将要读&#x2F;写的数据页放在 buffer pool 当中， buffer pool 中的脏页会定期刷新到磁盘。</li>
+<li>宕机时，buffer pool 中的数据即丢失，需要依靠 redo log 进行恢复。</li>
+<li>redo log 也有自己的刷盘策略，每次事务提交时能调用 fsync 将缓存中的 redo log 写入磁盘文件，同时也会将并发执行的未提交的部分事务一同刷盘；master thread 每秒刷盘；缓存空间达到一定大小的时候，也会执行刷盘（刷入系统 cache）。</li>
+<li>redo log 的刷盘是追加操作，每次只增加需要修改的部分（不像数据页刷脏，要将整个页写入硬盘），再加上是顺序 I&#x2F;O，即使每次事务的提交都至少伴随着一次磁盘 I&#x2F;O，效率也非常高。</li>
+</ul>
+</li>
+<li><p>隔离性 Isolation：隔离性是为了减少事务之间的干扰，主要依靠锁、事务隔离级别、MVCC机制来实现。</p>
+</li>
+<li><p>一致性 Consistency：注意到 AID 本质上都是为了 C 服务的，所以在保证了 AID 的前提下，只需保证一些完整性约束即可满足 C。</p>
+</li>
+</ul>
+<h4 id="n-题目："><a href="#n-题目：" class="headerlink" title="n. 题目："></a>n. 题目：</h4></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://roomay.github.io/pages">Roomay</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://roomay.github.io/pages/2021/07/13/MySQL/">https://roomay.github.io/pages/2021/07/13/MySQL/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/07/13/Redis/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Redis 基础知识</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/13/DS/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">数据结构基础知识</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/07/13/DS/" title="数据结构基础知识"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-13</div><div class="title">数据结构基础知识</div></div></a></div><div><a href="/2021/07/13/Network/" title="计算机网络基础知识"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-13</div><div class="title">计算机网络基础知识</div></div></a></div><div><a href="/2021/07/13/Redis/" title="Redis 基础知识"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-13</div><div class="title">Redis 基础知识</div></div></a></div><div><a href="/2022/08/03/Distributed/" title="分布式系统、消息中间件相关"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-03</div><div class="title">分布式系统、消息中间件相关</div></div></a></div><div><a href="/2022/09/05/Thrift/" title="Thrift 相关知识点"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-05</div><div class="title">Thrift 相关知识点</div></div></a></div><div><a href="/2021/07/13/Java/" title="Java 基础知识、JVM、Java多线程、Java 网络编程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-13</div><div class="title">Java 基础知识、JVM、Java多线程、Java 网络编程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/cat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Roomay</div><div class="author-info__description">工科出身，转行码农，进了银行从头学起</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">154</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">107</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/roomay"><i class="fab fa-github"></i><span>没啥好点的</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">转战体制内，会陆续更一些职业规划相关的思考，技术相关的内容会暂时断更拖更</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E5%92%8C%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">1. 聚簇索引和普通索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E5%92%8C%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E6%98%AF%E5%8D%95%E7%8B%AC%E5%AD%98%E5%9C%A8%E8%A1%A8%E8%BF%98%E6%98%AF%E5%8F%A6%E5%A4%96%E5%BC%80%E4%B8%80%E4%B8%AA%E8%A1%A8%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">2. 普通索引和聚簇索引是单独存在表还是另外开一个表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-HashMap-%E5%92%8C-B-%E6%A0%91%E6%9C%89%E4%BD%95%E5%BC%82%E5%90%8C%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%80%E8%88%AC%E4%BD%BF%E7%94%A8b%E6%A0%91%E6%9D%A5%E5%BD%93%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">3. HashMap 和 B 树有何异同，为什么数据库一般使用b树来当索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-MySQL-%E5%90%84%E5%BC%95%E6%93%8E%E5%8F%8A%E5%85%B6%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">4. MySQL 各引擎及其主要区别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86%E5%8F%8A%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">5. 主从复制原理及步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%9B%9E%E8%A1%A8%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">6. 回表：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">7. 覆盖索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">8. 隔离级别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">9.</span> <span class="toc-text">9. 并发事务带来的问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-CAS-%E5%92%8C-ABA-%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">10.</span> <span class="toc-text">10. CAS 和 ABA 问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-innoDB-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-b-%E6%A0%91-%E8%80%8C%E4%B8%8D%E6%98%AF-b-%E6%A0%91%E6%9D%A5%E5%BD%93%E7%B4%A2%E5%BC%95%EF%BC%9A"><span class="toc-number">11.</span> <span class="toc-text">11. innoDB 为什么使用 b+ 树 而不是 b 树来当索引：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E4%B9%90%E8%A7%82%E9%94%81%E3%80%81%E6%82%B2%E8%A7%82%E9%94%81%E3%80%81MySQL-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="toc-number">12.</span> <span class="toc-text">12. 乐观锁、悲观锁、MySQL 如何实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-MySQL-%E5%AF%B9%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88ACID%EF%BC%89%EF%BC%9A"><span class="toc-number">13.</span> <span class="toc-text">13. MySQL 对事务的实现（ACID）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#n-%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-number">14.</span> <span class="toc-text">n. 题目：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/07/19/Stay-Active-Stay-Alive/" title="Stay Active, Stay Alive"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Stay Active, Stay Alive"/></a><div class="content"><a class="title" href="/2026/07/19/Stay-Active-Stay-Alive/" title="Stay Active, Stay Alive">Stay Active, Stay Alive</a><time datetime="2026-07-19T15:53:52.000Z" title="Created 2026-07-19 23:53:52">2026-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/20/Invest-A-Better-World/" title="为更好的世界投资"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="为更好的世界投资"/></a><div class="content"><a class="title" href="/2026/06/20/Invest-A-Better-World/" title="为更好的世界投资">为更好的世界投资</a><time datetime="2026-06-20T09:50:55.000Z" title="Created 2026-06-20 17:50:55">2026-06-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/18/%E3%80%8C%E5%AE%89%E5%85%A8%E3%80%8D%E7%9A%84%E7%94%9F%E6%B4%BB/" title="「安全」的生活"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="「安全」的生活"/></a><div class="content"><a class="title" href="/2026/04/18/%E3%80%8C%E5%AE%89%E5%85%A8%E3%80%8D%E7%9A%84%E7%94%9F%E6%B4%BB/" title="「安全」的生活">「安全」的生活</a><time datetime="2026-04-17T23:13:37.000Z" title="Created 2026-04-18 07:13:37">2026-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/" title="从500倍租售比说开去"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从500倍租售比说开去"/></a><div class="content"><a class="title" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/" title="从500倍租售比说开去">从500倍租售比说开去</a><time datetime="2026-04-05T11:19:15.000Z" title="Created 2026-04-05 19:19:15">2026-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/pricing/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2026/04/05/%E4%BB%8E500%E5%80%8D%E7%A7%9F%E5%94%AE%E6%AF%94%E8%AF%B4%E5%BC%80%E5%8E%BB/pricing/" title="No title">No title</a><time datetime="2026-04-04T16:00:00.000Z" title="Created 2026-04-05 00:00:00">2026-04-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By Roomay</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
