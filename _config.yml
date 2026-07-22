@@ -73,6 +73,7 @@ tag_map:
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+# 禁用文章和页面的 Nunjucks 模板解析
 meta_generator: true
 
 # Date / Time format
