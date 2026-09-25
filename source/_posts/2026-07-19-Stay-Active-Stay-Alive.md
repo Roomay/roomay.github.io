@@ -23,6 +23,8 @@ updated: 2026-07-19 23:53:52
 
 近来惊闻ZCR跳楼的消息，总给我一种这个世界不真实的感觉。我跟她交集很少，只是零星听闻人在世界银行工作——曾经我暗自盘算如果有天在银行干不下去了，就收拾行装去投世界银行的简历，满世界做公益项目，算是我的 Dream Job——但就是这样一个不错的履历，再加上印象里此人还算开朗的性格，却选择了如此激烈的方式与世界告别。
 
+兔死狐悲物伤其类，在「英年早逝」这类新闻的评论区里，越来越多地见到这类论断——「人不是老了才会死，而是随时都有可能死」——疾病也好，意外也罢，抑或是主动了结，仔细回想身边的案例，这个论断说得没错，但反直觉，反直觉到让人感觉有些残酷冷血。但客观世界并不以人的喜好而转移，
+
 其实一直以来我也在思考一些很终极的问题：
 
 * 比如到底是什么支撑一个人真正「活」在这个世界上，而非像行尸走肉一般浑浑噩噩地混日子？
@@ -39,7 +41,7 @@ updated: 2026-07-19 23:53:52
     const article = document.querySelector('.post-content, .article-entry, .markdown-body') || document.body;
     const headings = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
     let counts = [0, 0, 0, 0, 0, 0];
-    
+
     headings.forEach(heading => {
       const level = parseInt(heading.tagName.substring(1)) - 1;
       counts[level]++;
