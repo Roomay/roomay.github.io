@@ -1,60 +1,47 @@
 ---
-title: CI/CD 流水线梳理
+title: Stay Active, Stay Alive
 categories:
-  - 工作踩坑
+  - 杂谈
 tags:
-  - 工作
-  - 后端
+  - 经济
+  - 人生规划
+  - xx
 toc: true
-date: 2022-09-09 15:38:08
-updated: 2022-09-09 15:38:08
+date: 2026-07-19 23:53:52
+updated: 2026-07-19 23:53:52
 ---
 
 [//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-对工作中碰到的 CI/CD 流程做一点简单梳理。
+
 <!--more-->
 <script id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
 //]]></script>
 
 [//]: # "下一行开始为正文"
-# CI/CD 流水线
-本文参考以下文档：
-  * [Continuous Integration](https://developers.redhat.com/blog/2017/09/06/continuous-integration-a-typical-process?extIdCarryOver=true&sc_cid=701f2000001OH7EAAW)
+## 生命脆弱
 
-## 什么是 CI/CD
-抽象的 CI/CD 流程并不复杂。
-* CI「持续集成」使得开发者可以频繁提交更改的代码，合并到应用当中，并自动构建应用镜像，运行不同级别的自动化测试（针对类、函数、功能模块等）来验证更改没有产生破坏性的错误，也没有与现存代码产生冲突。
-  * 代码库提交 -> 静态（代码）分析 -> 
-* CD(Continuous Delivery)「持续交付」将 CI 已经验证的代码合并到代码库，满足可以随时部署到生产环境的条件。
-* CD(Continuous Deployment)「持续部署」将前一个 CD 构建就绪的应用镜像部署到生产环境。
+近来惊闻ZCR跳楼的消息，总给我一种这个世界不真实的感觉。我跟她交集很少，只是零星听闻人在世界银行工作——曾经我暗自盘算如果有天在银行干不下去了，就收拾行装去投世界银行的简历，满世界做公益项目，算是我的 Dream Job——但就是这样一个不错的履历，再加上印象里此人还算开朗的性格，却选择了如此激烈的方式与世界告别。
 
-## 对应 Console 的流水线流程
-* 构建
-  * 推到 Repo 合并入 master，从此步骤开始构建一个可部署的镜像 Deploy Candidate，进入后面的步骤
-  * Linting 静态分析
-  * 单元测试
-  * 集成测试
-* 部署
-  * 部署到开发环境
-  * 部署到 QA 环境
-  * 部署到 UAT 验收
-  * 部署到 Staging 环境预览
-* 发布
-  * 部署到生产环境，k8s 管理的一个个服务容器
-    * 金丝雀发布
-      将新镜像的实例发布到一组金丝雀容器，将原有镜像发布到另一组基线容器上，对比两者的 metrics，分析是否存在问题。
-  
-    * 逐步用新镜像的实例替换将所有旧实例
+兔死狐悲物伤其类，在「英年早逝」这类新闻的评论区里，越来越多地见到这类论断——「人不是老了才会死，而是随时都有可能死」——疾病也好，意外也罢，抑或是主动了结，仔细回想身边的案例，这个论断说得没错，但反直觉，反直觉到让人感觉有些残酷冷血。但客观世界并不以人的喜好而转移，
 
-  
+其实一直以来我也在思考一些很终极的问题：
+
+* 比如到底是什么支撑一个人真正「活」在这个世界上，而非像行尸走肉一般浑浑噩噩地混日子？
+* 又比如
+
+## 章节2
+
+## 章节3
+
+…………
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const article = document.querySelector('.post-content, .article-entry, .markdown-body') || document.body;
     const headings = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
     let counts = [0, 0, 0, 0, 0, 0];
-    
+
     headings.forEach(heading => {
       const level = parseInt(heading.tagName.substring(1)) - 1;
       counts[level]++;

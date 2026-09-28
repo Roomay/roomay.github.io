@@ -24,50 +24,62 @@ updated: 2023-01-25 10:40:59
 都说一年硕士水，我想正是这种「水」给了我充分的时间思考未来的人生规划，我决定转向体制内寻找机会，在22年底，婉拒掉了手里的这两个offer，报名国考、向国企投递简历，备考体制内的考试（行测、申论、结构化面试等）。
 截止3月份，手里拿到了一些不错的机会。一个是老家的人才引进项目下边某科级国企中层信息技术岗位、一个邻市某大行分行业务岗位、一个同样邻市的某大行金融科技子公司的开发岗位、一个杭州的大行直属研发中心的技术研发岗位。
 很难讲我最后在这几个、甚至未来更多潜在选项里，会选择哪一个。但是这个取舍的过程当中思考是非常宝贵的，我不停在拷问自己，自己想要的到底是什么，希望能够给自己未来的发展指明方向。
+
 ## 「好工作」的标准是什么
 对这个问题，我懵懵懂懂有一些自己的看法，但是并没有足够的智慧提炼总结。恰好冲浪时看到了某位大佬的说法，「能够保障经济支持、积累经验和自信心，同时又有利于自己的长期发展目标」，认为深得我心，于是拾人牙慧，引以攻玉。
 
 ## 找工作的本质是三个维度的考量，行业、企业、职业。
-## 市场经济下，任何行为都可以看作是某种价值投资的具现化，比如读书不是纯粹学知识，而是用自己当前的时间和学费去投资一张未来的文凭。这种感觉不一定好，有时候你很难接受自己辛辛苦苦受的教育到头来还只不过是为了卖一个好价钱，你可能会情不自禁想要赋予这一行为更崇高的意义
-## 不论你身在何种岗位，哪怕不是销售性质的岗位，你也（对自己）负有把才能兜售、推销给你的雇主（客户）的责任
-## 从大的时间尺度上看，很多原本高薪的岗位会慢慢消除溢价，其中有一部分原因是（雇主和雇主之间，雇主和劳动力之间，劳动力之间）信息不对称的慢慢消弭。所谓人脉就是这种信息不对称的一种表现形式。任何一方想要提高议价权，不论你是靠牌照、技术、市场、人脉，等等，本质上都是在尽可能制造不对称，增加自己获取的信息量，减少别人的信息获取量。可以认为每一次信息的流动都是在（部分）消除不对称，同时也在使信息变现。每一次信息的封锁都是在投资，牺牲了信息当下的变现能力，赌它在未来的变现。
+市场经济下，任何行为都可以看作是某种价值投资的具现化，比如读书不是纯粹学知识，而是用自己当前的时间和学费去投资一张未来的文凭。这种感觉不一定好，有时候你很难接受自己辛辛苦苦受的教育到头来还只不过是为了卖一个好价钱，你可能会情不自禁想要赋予这一行为更崇高的意义。剥离开这些情绪化的因素，我认为，一个人的知识、技能、经验、忠诚、创造力等等因素需要在市场环境下被定价。但人不是工业标准品，身上所具备的品质无法被直观地评价，在求职、日常工作中，哪怕身在非营销性质的岗位，每个人都负有把才能兜售给雇主（或客户）的责任。而用人方综合相关特质的稀缺性、求职者与用人需求的匹配程度等等因素，决定是否录取候选人以及愿意支付多少溢价。
 
 
-<style type="text/css">
-    h1 { counter-reset: h2counter; }
-    h2 { counter-reset: h3counter; }
-    h3 { counter-reset: h4counter; }
-    h4 { counter-reset: h5counter; }
-    h5 { counter-reset: h6counter; }
-    h6 { }
-    h2:before {
-      counter-increment: h2counter;
-      content: counter(h2counter) ".\0000a0\0000a0";
-    }
-    h3:before {
-      counter-increment: h3counter;
-      content: counter(h2counter) "."
-                counter(h3counter) ".\0000a0\0000a0";
-    }
-    h4:before {
-      counter-increment: h4counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) ".\0000a0\0000a0";
-    }
-    h5:before {
-      counter-increment: h5counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) "."
-                counter(h5counter) ".\0000a0\0000a0";
-    }
-    h6:before {
-      counter-increment: h6counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) "."
-                counter(h5counter) "."
-                counter(h6counter) ".\0000a0\0000a0";
-    }
+
+### 
+
+从大的时间尺度上看，很多原本高薪的岗位会慢慢消除溢价，其中有一部分原因是（雇主和雇主之间，雇主和劳动力之间，劳动力之间）信息不对称的慢慢消弭。所谓人脉就是这种信息不对称的一种表现形式。任何一方想要提高议价权，不论你是靠牌照、知识、技术、市场、人脉，等等，本质上都是在尽可能制造信息的不对称，增加自己获取的信息量，减少别人的信息获取量。可以认为每一次信息的流动都是在（部分）消除不对称，同时也在使信息变现。
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const article = document.querySelector('.post-content, .article-entry, .markdown-body') || document.body;
+    const headings = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    let counts = [0, 0, 0, 0, 0, 0];
+    
+    headings.forEach(heading => {
+      const level = parseInt(heading.tagName.substring(1)) - 1;
+      counts[level]++;
+      
+      // 清除所有更低层级的计数器
+      for (let i = level + 1; i < 6; i++) { 
+        counts[i] = 0; 
+      }
+      
+      // 核心修改：只将大于 0 的层级加入序号，自动过滤跨级产生的 0
+      let seqParts = [];
+      for (let i = 0; i <= level; i++) {
+        if (counts[i] > 0) {
+          seqParts.push(counts[i]);
+        }
+      }
+      
+      // 拼接序号
+      let seqStr = seqParts.join('.') + '.';
+      
+      if (seqStr !== '.' && !heading.querySelector('.heading-seq')) {
+        const span = document.createElement('span');
+        span.className = 'heading-seq';
+        span.textContent = seqStr + '\u00A0\u00A0';
+        const headerlink = heading.querySelector('.headerlink');
+        if (headerlink) {
+          heading.insertBefore(span, headerlink.nextSibling);
+        } else {
+          heading.insertBefore(span, heading.firstChild);
+        }
+      }
+    });
+  });
+</script>
+<style>
+  .heading-seq { font-family: inherit; color: inherit; }
 </style>

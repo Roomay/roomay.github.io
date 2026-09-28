@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: roads-ahead-posts
+created: 2026-09-27T20:07:18+08:00

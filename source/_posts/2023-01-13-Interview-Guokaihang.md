@@ -99,41 +99,46 @@ C 选项强调资源的充分利用，D选项还需调配土地、培训队伍�
 * 此外，我也会尝试运用编程等等自动化工具，来使我的工作更为高效。
 * 据我了解，不仅是本行，包括像其他很多商业银行、投行，也非常青睐具有计算机背景的人才参与到具体业务当中，我想这些都可以作为我当前背景的优势。
 
-<style type="text/css">
-    h1 { counter-reset: h2counter; }
-    h2 { counter-reset: h3counter; }
-    h3 { counter-reset: h4counter; }
-    h4 { counter-reset: h5counter; }
-    h5 { counter-reset: h6counter; }
-    h6 { }
-    h2:before {
-      counter-increment: h2counter;
-      content: counter(h2counter) ".\0000a0\0000a0";
-    }
-    h3:before {
-      counter-increment: h3counter;
-      content: counter(h2counter) "."
-                counter(h3counter) ".\0000a0\0000a0";
-    }
-    h4:before {
-      counter-increment: h4counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) ".\0000a0\0000a0";
-    }
-    h5:before {
-      counter-increment: h5counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) "."
-                counter(h5counter) ".\0000a0\0000a0";
-    }
-    h6:before {
-      counter-increment: h6counter;
-      content: counter(h2counter) "."
-                counter(h3counter) "."
-                counter(h4counter) "."
-                counter(h5counter) "."
-                counter(h6counter) ".\0000a0\0000a0";
-    }
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const article = document.querySelector('.post-content, .article-entry, .markdown-body') || document.body;
+    const headings = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    let counts = [0, 0, 0, 0, 0, 0];
+    
+    headings.forEach(heading => {
+      const level = parseInt(heading.tagName.substring(1)) - 1;
+      counts[level]++;
+      
+      // 清除所有更低层级的计数器
+      for (let i = level + 1; i < 6; i++) { 
+        counts[i] = 0; 
+      }
+      
+      // 核心修改：只将大于 0 的层级加入序号，自动过滤跨级产生的 0
+      let seqParts = [];
+      for (let i = 0; i <= level; i++) {
+        if (counts[i] > 0) {
+          seqParts.push(counts[i]);
+        }
+      }
+      
+      // 拼接序号
+      let seqStr = seqParts.join('.') + '.';
+      
+      if (seqStr !== '.' && !heading.querySelector('.heading-seq')) {
+        const span = document.createElement('span');
+        span.className = 'heading-seq';
+        span.textContent = seqStr + '\u00A0\u00A0';
+        const headerlink = heading.querySelector('.headerlink');
+        if (headerlink) {
+          heading.insertBefore(span, headerlink.nextSibling);
+        } else {
+          heading.insertBefore(span, heading.firstChild);
+        }
+      }
+    });
+  });
+</script>
+<style>
+  .heading-seq { font-family: inherit; color: inherit; }
 </style>

@@ -1,0 +1,5 @@
+(?d).DS_Store
+(?d)Thumbs.db
+(?d)Desktop.ini
+(?d)*~
+(?d)*.swp
