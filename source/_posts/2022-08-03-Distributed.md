@@ -1,5 +1,7 @@
 ---
 title: 分布式系统、消息中间件相关
+description: >-
+  使用 Hadoop、Spark、Kafka、RocketMQ 等分布式组件、消息组件时涉及到的问题
 categories:
   - 面经热身
 tags:
@@ -10,15 +12,6 @@ toc: true
 date: 2022-08-03 10:19:26
 updated: 2022-09-06 23:48:44
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-使用 Hadoop、Spark、Kafka、RocketMQ 等分布式组件、消息组件时涉及到的问题。
-<!--more-->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-[//]: # "下一行开始为正文"
 # 分布式系统、消息中间件相关
 
 ## Kubernutes（K8s） 的工作原理，配置管理虚拟容器集群的优点

@@ -1,5 +1,7 @@
 ---
 title: Why Nations Fail
+description: >-
+  这本书写得太好了，好到刚看了开头几章就忍不住要写笔记把感想记下来
 categories:
   - 读书杂记
 tags:
@@ -11,15 +13,6 @@ toc: true
 date: 2026-03-23 23:24:06
 updated: 2026-03-23 23:24:06
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-这本书写得太好了，好到刚看了开头几章就忍不住要写笔记把感想记下来。
-<!--more-->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-[//]: # "下一行开始为正文"
 # 主要观点
 
 ## 美洲南北大陆的制度沿革

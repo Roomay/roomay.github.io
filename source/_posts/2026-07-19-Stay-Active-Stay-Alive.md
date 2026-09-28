@@ -1,5 +1,7 @@
 ---
 title: Stay Active, Stay Alive
+description: >-
+  近来惊闻ZCR跳楼的消息，总给我一种这个世界不真实的感觉
 categories:
   - 杂谈
 tags:
@@ -10,15 +12,6 @@ toc: true
 date: 2026-07-19 23:53:52
 updated: 2026-07-19 23:53:52
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-
-<!--more-->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-[//]: # "下一行开始为正文"
 ## 生命脆弱
 
 近来惊闻ZCR跳楼的消息，总给我一种这个世界不真实的感觉。我跟她交集很少，只是零星听闻人在世界银行工作——曾经我暗自盘算如果有天在银行干不下去了，就收拾行装去投世界银行的简历，满世界做公益项目，算是我的 Dream Job——但就是这样一个不错的履历，再加上印象里此人还算开朗的性格，却选择了如此激烈的方式与世界告别。

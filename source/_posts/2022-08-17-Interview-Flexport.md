@@ -1,5 +1,7 @@
 ---
 title: Flexport 面试
+description: >-
+  Flexport 的风格跟大多数外企一样，主要考察做题
 categories:
   - 面经
 tags:
@@ -11,18 +13,6 @@ toc: true
 date: 2022-08-17 18:00:40
 updated: 2022-08-17 18:00:40
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-Flexport 的风格跟大多数外企一样，主要考察做题。
-<!--more-->
-
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-
-[//]: # "下一行开始为正文"
-
 # 一面
 考察了两道算法题（第二道当场没想出来，不确定后续是否还有其他题），题本身不难，可能自己有点钻牛角尖没做出第二问。在这里记录以供复盘。
 ## 随机字符串生成

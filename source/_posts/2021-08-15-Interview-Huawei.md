@@ -1,5 +1,7 @@
 ---
 title: 2022 华为云 BU 校招 Java 后端开发秋招
+description: >-
+  华为云 BU 校招 Java 后端开发，一面、二面面经
 categories:
   - 22秋招面经总结
 tags:
@@ -10,15 +12,6 @@ toc: true
 date: 2021-08-15 21:59:02
 updated: 2021-08-15 21:59:02
 ---
-
-[//]: # (下一行开始到<!--more-->为引文部分，引文会显示在预览中)
-华为云 BU 校招 Java 后端开发，一面、二面面经
-<!--more-->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-[//]: # (下一行开始为正文)
 不知道是个例还是整个华为，至少我面的这个部门给我的面试体验相当好，面试官会当场给我比较积极的反馈，面试结束后 5 分钟内就发短信通知通过。美中不足的是笔试后面还有很长很罗嗦的性格心理测评题，个人说实话比较反感这类测评以及行测题，但总之瑕不掩瑜。
 
 ### 一面

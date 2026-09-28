@@ -1,5 +1,7 @@
 ---
 title: 某银行2023校招业务岗面经
+description: >-
+  国企业务岗位，面试流程基本跟公务员面试类似，无领导小组讨论+半结构化面试，对于后续的国考省考面试（如果笔试通过的话）以及其他体制内岗位有比较强的参考价值
 categories:
   - 面经
 tags:
@@ -10,18 +12,6 @@ toc: true
 date: 2023-01-13 14:17:41
 updated: 2023-01-13 14:17:41
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-国企业务岗位，面试流程基本跟公务员面试类似，无领导小组讨论+半结构化面试，对于后续的国考省考面试（如果笔试通过的话）以及其他体制内岗位有比较强的参考价值
-<!--more-->
-
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-
-[//]: # "下一行开始为正文"
-
 # 无领导小组讨论
 
 ## 问题背景

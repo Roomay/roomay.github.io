@@ -1,5 +1,7 @@
 ---
 title: 后端项目中连接池的应用
+description: >-
+  在医疗管理系统中，为了缓解服务器压力，引入了连接池的组件来管理连接
 categories:
   - 面经热身
 tags:
@@ -11,15 +13,6 @@ toc: true
 date: 2022-09-25 13:17:19
 updated: 2022-09-25 13:17:19
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-在医疗管理系统中，为了缓解服务器压力，引入了连接池的组件来管理连接。
-<!--more-->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-[//]: # "下一行开始为正文"
 # 后端项目中连接池的应用
 
 ## 多个请求集中访问低性能服务器，如何限流

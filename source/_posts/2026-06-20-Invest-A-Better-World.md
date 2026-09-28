@@ -1,5 +1,7 @@
 ---
 title: 为更好的世界投资
+description: >-
+  最近配置一万块红利低波，两天跌了3个百分点300块离场，离场后跌幅扩大至3.6百分点，变成了妥妥的高波，反思了一下自己的购买逻辑
 categories:
   - 杂谈
 tags:
@@ -9,15 +11,6 @@ toc: true
 date: 2026-06-20 17:50:55
 updated: 2026-06-27 11:47:30
 ---
-
-[//]: # "下一行开始到<!--more-->为引文部分，引文会显示在预览中"
-
-<!--more-->
-<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.14'><\/script>".replace("HOST", location.hostname));
-//]]></script>
-
-[//]: # "下一行开始为正文"
 ### 投资逻辑反思
 
 最近配置一万块红利低波，两天跌了3个百分点300块离场，离场后跌幅扩大至3.6百分点，变成了妥妥的高波，反思了一下自己的购买逻辑。
